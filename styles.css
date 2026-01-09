@@ -1896,28 +1896,7 @@ a.event-card:hover {
     }
 
     .amenities-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-    }
-
-    .amenity-card {
-        padding: 16px;
-    }
-
-    .amenity-card h3 {
-        font-size: 0.9rem;
-    }
-
-    .amenity-card p {
-        font-size: 0.75rem;
-        line-height: 1.4;
-    }
-
-    .amenity-icon {
-        width: 40px;
-        height: 40px;
-        margin-bottom: 12px;
+        grid-template-columns: 1fr;
     }
 
     .nearby-categories {
