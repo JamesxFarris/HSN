@@ -1830,9 +1830,13 @@ a.event-card:hover {
     }
 
     .hero {
-        padding-top: 160px;
-        min-height: auto;
-        padding-bottom: 40px;
+        padding-top: 100px;
+        min-height: 100vh;
+        min-height: 100dvh;
+        padding-bottom: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     /* Full width attraction cards on mobile */
