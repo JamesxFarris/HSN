@@ -94,6 +94,17 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     font-size: 1.1rem;
 }
 
+/* Highlight/Script Font - Beachy yet classy */
+.font-highlight {
+    font-family: 'Satisfy', cursive;
+}
+
+.text-highlight {
+    font-family: 'Satisfy', cursive;
+    font-size: 1.2em;
+    color: var(--primary-light);
+}
+
 /* ===== Buttons ===== */
 .btn {
     display: inline-block;
