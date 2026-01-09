@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initReservationForm();
     initRoomToggle();
+    initResponsiveRooms();
     initViewMore();
     initSmoothScroll();
     setMinDates();
@@ -506,29 +507,93 @@ function initRoomToggle() {
     }
 }
 
-// ===== View More Rooms Toggle =====
-function initViewMore() {
-    const viewMoreBtns = document.querySelectorAll('.view-more-btn');
+// ===== Responsive Room Display =====
+function initResponsiveRooms() {
+    const oceanfrontRooms = document.getElementById('oceanfront-rooms');
+    const oceanfrontMoreRooms = document.getElementById('oceanfront-more-rooms');
+    const viewMoreBtn = document.querySelector('.view-more-btn[data-target="oceanfront-more-rooms"]');
 
-    viewMoreBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            const targetId = this.dataset.target;
-            const targetEl = document.getElementById(targetId);
-            const containerEl = this.closest('.view-more-container');
+    if (!oceanfrontRooms || !viewMoreBtn) return;
 
-            if (targetEl) {
-                targetEl.classList.toggle('show');
+    // Get all room cards from both sections
+    const initialRoomCards = oceanfrontRooms.querySelectorAll('.room-card');
+    const moreRoomCards = oceanfrontMoreRooms ? oceanfrontMoreRooms.querySelectorAll('.room-card') : [];
 
-                if (targetEl.classList.contains('show')) {
-                    this.textContent = 'Show Less';
-                    // Scroll to the newly visible rooms
-                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                } else {
-                    this.textContent = 'View More Oceanfront Rooms';
-                }
+    let initialCount = window.innerWidth > 768 ? 6 : 4;
+    let showingAll = false;
+
+    function updateRoomVisibility() {
+        // Show/hide initial room cards based on count
+        initialRoomCards.forEach((card, index) => {
+            if (index < initialCount || showingAll) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
             }
         });
+
+        // Show/hide more rooms section
+        if (oceanfrontMoreRooms) {
+            if (showingAll) {
+                oceanfrontMoreRooms.classList.add('show');
+            } else {
+                oceanfrontMoreRooms.classList.remove('show');
+            }
+        }
+
+        // Update button text
+        const hiddenInitial = Math.max(0, initialRoomCards.length - initialCount);
+        const totalHidden = showingAll ? 0 : hiddenInitial + moreRoomCards.length;
+
+        if (showingAll) {
+            viewMoreBtn.textContent = 'Show Less';
+        } else if (totalHidden > 0) {
+            viewMoreBtn.textContent = `View More Oceanfront Rooms (${totalHidden} more)`;
+        }
+
+        // Show/hide button
+        if (totalHidden === 0 && !showingAll) {
+            viewMoreBtn.style.display = 'none';
+        } else {
+            viewMoreBtn.style.display = 'inline-block';
+        }
+    }
+
+    // Initial render
+    updateRoomVisibility();
+
+    // Handle resize
+    window.addEventListener('resize', function() {
+        const newInitial = window.innerWidth > 768 ? 6 : 4;
+        if (newInitial !== initialCount) {
+            initialCount = newInitial;
+            if (!showingAll) {
+                updateRoomVisibility();
+            }
+        }
     });
+
+    // View more button click
+    viewMoreBtn.addEventListener('click', function() {
+        showingAll = !showingAll;
+        updateRoomVisibility();
+
+        if (showingAll && oceanfrontMoreRooms) {
+            // Scroll to show more rooms
+            setTimeout(() => {
+                const firstHiddenCard = initialRoomCards[initialCount] || oceanfrontMoreRooms.querySelector('.room-card');
+                if (firstHiddenCard) {
+                    firstHiddenCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 100);
+        }
+    });
+}
+
+// ===== View More Rooms Toggle (Legacy - kept for street view) =====
+function initViewMore() {
+    // Room view more is now handled by initResponsiveRooms
+    // This function kept for any other view-more buttons
 }
 
 // ===== Smooth Scroll for Anchor Links =====
