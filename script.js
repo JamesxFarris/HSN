@@ -332,7 +332,7 @@ function initUpcomingEvents() {
             if (displayCount >= filteredEvents.length) {
                 displayCount = initialCount;
             } else {
-                displayCount = Math.min(displayCount + 4, filteredEvents.length);
+                displayCount = Math.min(displayCount + 6, filteredEvents.length);
             }
             renderEvents();
         });
