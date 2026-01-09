@@ -245,6 +245,11 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     transform: translateY(calc(-100% - 8px));
 }
 
+.header.scrolled .header-top {
+    padding: 4px 0;
+    opacity: 0.95;
+}
+
 .header.scrolled .contact-bar a,
 .header.scrolled .social-links a {
     color: var(--primary-dark);
