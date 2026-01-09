@@ -225,10 +225,10 @@ function initSmoothScroll() {
 // ===== Header Scroll Effect =====
 (function() {
     const header = document.querySelector('.header');
-    const mainNav = document.querySelector('.main-nav');
+    const headerTop = document.querySelector('.header-top');
     let lastScroll = 0;
 
-    if (header && mainNav) {
+    if (header && headerTop) {
         window.addEventListener('scroll', function() {
             const currentScroll = window.pageYOffset;
 
@@ -239,13 +239,11 @@ function initSmoothScroll() {
                 header.style.boxShadow = '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)';
             }
 
-            // Center logo on scroll (mobile only)
-            if (window.innerWidth <= 768) {
-                if (currentScroll > 100) {
-                    mainNav.classList.add('scrolled');
-                } else {
-                    mainNav.classList.remove('scrolled');
-                }
+            // Collapse blue bar on scroll - triggers when scrolled past 50px
+            if (currentScroll > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
 
             lastScroll = currentScroll;
