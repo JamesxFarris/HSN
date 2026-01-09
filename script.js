@@ -9,7 +9,344 @@ document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
     setMinDates();
     initAttractionSlideshows();
+    initUpcomingEvents();
 });
+
+// ===== Upcoming Local Events =====
+function initUpcomingEvents() {
+    const eventsContainer = document.getElementById('events-container');
+    const viewMoreBtn = document.getElementById('view-more-events');
+    const monthFilter = document.getElementById('event-month-filter');
+    if (!eventsContainer) return;
+
+    // Annual Myrtle Beach events (month is 0-indexed: 0=Jan, 11=Dec)
+    // These events auto-update each year - past events show next year's dates
+    const annualEvents = [
+        {
+            name: "Beach Ball Drop",
+            description: "Ring in the New Year with a giant beach ball drop at Broadway at the Beach.",
+            month: 0, day: 1,
+            endMonth: 0, endDay: 1,
+            url: "https://www.broadwayatthebeach.com/events/"
+        },
+        {
+            name: "Myrtle Beach Marathon",
+            description: "Annual marathon and half-marathon along the beautiful Grand Strand coastline.",
+            month: 2, day: 1,
+            endMonth: 2, endDay: 3,
+            url: "https://www.myrtlebeachmarathon.com/"
+        },
+        {
+            name: "Canadian-American Days",
+            description: "Celebrating the friendship between Canada and America with special events and deals.",
+            month: 2, day: 10,
+            endMonth: 2, endDay: 20,
+            url: "https://www.visitmyrtlebeach.com/things-to-do/events/canadian-american-days/"
+        },
+        {
+            name: "St. Patrick's Day Parade",
+            description: "One of the largest St. Patrick's Day parades on the East Coast down Ocean Boulevard.",
+            month: 2, day: 17,
+            endMonth: 2, endDay: 17,
+            url: "https://www.visitmyrtlebeach.com/things-to-do/events/"
+        },
+        {
+            name: "Myrtle Beach Bike Week Spring Rally",
+            description: "Thousands of motorcycle enthusiasts gather for the legendary spring rally.",
+            month: 4, day: 8,
+            endMonth: 4, endDay: 17,
+            url: "https://www.myrtlebeachbikeweek.com/"
+        },
+        {
+            name: "Blue Crab Festival",
+            description: "Celebrate the blue crab with food, live music, and family fun in Little River.",
+            month: 4, day: 17,
+            endMonth: 4, endDay: 18,
+            url: "https://www.bluecrabfestival.org/"
+        },
+        {
+            name: "Carolina Country Music Fest",
+            description: "The largest outdoor country music festival on the East Coast at the beach.",
+            month: 5, day: 5,
+            endMonth: 5, endDay: 8,
+            url: "https://carolinacountrymusicfest.com/"
+        },
+        {
+            name: "Sun Fun Festival",
+            description: "Kick off summer with parades, concerts, and beach activities along the Grand Strand.",
+            month: 5, day: 1,
+            endMonth: 5, endDay: 4,
+            url: "https://www.visitmyrtlebeach.com/things-to-do/events/"
+        },
+        {
+            name: "July 4th Fireworks",
+            description: "Spectacular fireworks displays along the beach and at Broadway at the Beach.",
+            month: 6, day: 4,
+            endMonth: 6, endDay: 4,
+            url: "https://www.broadwayatthebeach.com/events/"
+        },
+        {
+            name: "Hot Summer Nights",
+            description: "Free summer concert series at Broadway at the Beach every Thursday night.",
+            month: 5, day: 15,
+            endMonth: 7, endDay: 31,
+            url: "https://www.broadwayatthebeach.com/events/"
+        },
+        {
+            name: "Myrtle Beach Bike Week Fall Rally",
+            description: "The fall edition of the famous motorcycle rally along the Grand Strand.",
+            month: 8, day: 25,
+            endMonth: 9, endDay: 4,
+            url: "https://www.myrtlebeachbikeweek.com/"
+        },
+        {
+            name: "Oktoberfest",
+            description: "German food, craft beer, live music, and fun at the Myrtle Beach Boardwalk.",
+            month: 9, day: 15,
+            endMonth: 9, endDay: 17,
+            url: "https://www.visitmyrtlebeach.com/things-to-do/events/"
+        },
+        {
+            name: "Irish Italian International Festival",
+            description: "A celebration of Irish and Italian heritage with food, music, and culture.",
+            month: 8, day: 22,
+            endMonth: 8, endDay: 24,
+            url: "https://www.irishitalianfestival.com/"
+        },
+        {
+            name: "Thanksgiving Weekend",
+            description: "Family activities, holiday shopping, and festive celebrations along the Grand Strand.",
+            month: 10, day: 25,
+            endMonth: 10, endDay: 30,
+            url: "https://www.visitmyrtlebeach.com/things-to-do/events/"
+        },
+        {
+            name: "Night of a Thousand Candles",
+            description: "Brookgreen Gardens illuminated by thousands of candles and holiday lights.",
+            month: 11, day: 1,
+            endMonth: 11, endDay: 31,
+            url: "https://www.brookgreen.org/calendar"
+        },
+        {
+            name: "Myrtle Beach Holiday Lights",
+            description: "Drive-through holiday light displays and festive celebrations at the Speedway.",
+            month: 10, day: 15,
+            endMonth: 11, endDay: 31,
+            url: "https://www.visitmyrtlebeach.com/things-to-do/events/"
+        },
+        {
+            name: "SOS Spring Safari",
+            description: "The legendary shag dancing festival at Ocean Drive Beach with live bands and dancing.",
+            month: 3, day: 18,
+            endMonth: 3, endDay: 27,
+            url: "https://www.shagdance.com/sos/"
+        },
+        {
+            name: "Myrtle Beach Pelicans Opening Day",
+            description: "Minor league baseball season kicks off at Pelicans Ballpark - family fun all summer!",
+            month: 3, day: 8,
+            endMonth: 3, endDay: 8,
+            url: "https://www.milb.com/myrtle-beach"
+        },
+        {
+            name: "Atalaya Arts & Crafts Festival",
+            description: "Fine arts and crafts festival at historic Atalaya Castle in Huntington Beach State Park.",
+            month: 8, day: 27,
+            endMonth: 8, endDay: 28,
+            url: "https://www.atalayafestival.com/"
+        },
+        {
+            name: "SOS Fall Migration",
+            description: "The fall edition of the famous shag dancing festival at Ocean Drive Beach.",
+            month: 8, day: 15,
+            endMonth: 8, endDay: 24,
+            url: "https://www.shagdance.com/sos/"
+        },
+        {
+            name: "Coastal Uncorked Food & Wine Festival",
+            description: "Celebrate local cuisine and wines from around the world at North Beach.",
+            month: 4, day: 1,
+            endMonth: 4, endDay: 3,
+            url: "https://www.visitmyrtlebeach.com/things-to-do/events/"
+        },
+        {
+            name: "Beach Boogie & BBQ",
+            description: "BBQ competition, live beach music, and family activities at the Boardwalk.",
+            month: 10, day: 7,
+            endMonth: 10, endDay: 9,
+            url: "https://www.visitmyrtlebeach.com/things-to-do/events/"
+        },
+        {
+            name: "Myrtle Beach Classic",
+            description: "Premier college basketball tournament featuring top NCAA teams.",
+            month: 10, day: 21,
+            endMonth: 10, endDay: 24,
+            url: "https://www.visitmyrtlebeach.com/things-to-do/events/"
+        },
+        {
+            name: "Labor Day Beach Bash",
+            description: "End summer with fireworks, live music, and beach activities along the Grand Strand.",
+            month: 8, day: 1,
+            endMonth: 8, endDay: 3,
+            url: "https://www.visitmyrtlebeach.com/things-to-do/events/"
+        },
+        {
+            name: "Memorial Day Weekend",
+            description: "Kick off summer with beach events, live entertainment, and fireworks.",
+            month: 4, day: 24,
+            endMonth: 4, endDay: 27,
+            url: "https://www.visitmyrtlebeach.com/things-to-do/events/"
+        },
+        {
+            name: "Pawleys Island Festival of Music & Art",
+            description: "Weekend of live music and art exhibitions in charming Pawleys Island.",
+            month: 9, day: 10,
+            endMonth: 9, endDay: 12,
+            url: "https://www.pawleysmusic.com/"
+        },
+        {
+            name: "World Famous Crab Races",
+            description: "Weekly crab racing at Broadway at the Beach - fun for all ages!",
+            month: 5, day: 1,
+            endMonth: 7, endDay: 31,
+            url: "https://www.broadwayatthebeach.com/events/"
+        }
+    ];
+
+    const today = new Date();
+    const currentYear = today.getFullYear();
+
+    // Create event objects with actual dates
+    function getEventsWithDates() {
+        const eventsWithDates = [];
+
+        annualEvents.forEach(event => {
+            // Create date for this year
+            let startDate = new Date(currentYear, event.month, event.day);
+            let endDate = new Date(currentYear, event.endMonth, event.endDay);
+
+            // If the event has already passed this year, show next year's date
+            if (endDate < today) {
+                startDate = new Date(currentYear + 1, event.month, event.day);
+                endDate = new Date(currentYear + 1, event.endMonth, event.endDay);
+            }
+
+            eventsWithDates.push({
+                ...event,
+                startDate,
+                endDate
+            });
+        });
+
+        // Sort by start date
+        eventsWithDates.sort((a, b) => a.startDate - b.startDate);
+        return eventsWithDates;
+    }
+
+    let allEvents = getEventsWithDates();
+    let initialCount = window.innerWidth > 768 ? 6 : 4;
+    let displayCount = initialCount;
+    let currentFilter = 'upcoming';
+
+    // Update display count on resize
+    window.addEventListener('resize', function() {
+        const newInitial = window.innerWidth > 768 ? 6 : 4;
+        if (newInitial !== initialCount && displayCount === initialCount) {
+            initialCount = newInitial;
+            displayCount = newInitial;
+            renderEvents();
+        }
+        initialCount = newInitial;
+    });
+
+    function renderEventCard(event) {
+        const monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const startMonth = monthNames[event.startDate.getMonth()];
+        const startDay = event.startDate.getDate();
+        const endDay = event.endDate.getDate();
+
+        // Format the day display
+        let dayDisplay = startDay;
+        if (startDay !== endDay || event.startDate.getMonth() !== event.endDate.getMonth()) {
+            dayDisplay = `${startDay}-${endDay}`;
+        }
+
+        return `
+            <a href="${event.url}" target="_blank" rel="noopener" class="event-card">
+                <div class="event-date">
+                    <span class="month">${startMonth}</span>
+                    <span class="day">${dayDisplay}</span>
+                </div>
+                <div class="event-info">
+                    <h4>${event.name}</h4>
+                    <p>${event.description}</p>
+                </div>
+            </a>
+        `;
+    }
+
+    function getFilteredEvents() {
+        if (currentFilter === 'upcoming') {
+            return allEvents;
+        } else if (currentFilter === 'all') {
+            // Sort by month for "all events" view
+            return [...allEvents].sort((a, b) => a.month - b.month);
+        } else {
+            // Filter by specific month
+            const filterMonth = parseInt(currentFilter);
+            return allEvents.filter(event => event.month === filterMonth);
+        }
+    }
+
+    function renderEvents() {
+        const filteredEvents = getFilteredEvents();
+        const eventsToShow = filteredEvents.slice(0, displayCount);
+
+        if (eventsToShow.length === 0) {
+            eventsContainer.innerHTML = '<p class="no-events">No events found for this month.</p>';
+        } else {
+            eventsContainer.innerHTML = eventsToShow.map(renderEventCard).join('');
+        }
+
+        // Show/hide view more button
+        if (viewMoreBtn) {
+            if (filteredEvents.length > displayCount) {
+                viewMoreBtn.style.display = 'inline-block';
+                viewMoreBtn.textContent = `View More Events (${filteredEvents.length - displayCount} more)`;
+            } else if (displayCount > initialCount && filteredEvents.length > initialCount) {
+                viewMoreBtn.style.display = 'inline-block';
+                viewMoreBtn.textContent = 'Show Less';
+            } else {
+                viewMoreBtn.style.display = 'none';
+            }
+        }
+    }
+
+    // Initial render
+    renderEvents();
+
+    // View more button click handler
+    if (viewMoreBtn) {
+        viewMoreBtn.addEventListener('click', function() {
+            const filteredEvents = getFilteredEvents();
+            if (displayCount >= filteredEvents.length) {
+                displayCount = initialCount;
+            } else {
+                displayCount = Math.min(displayCount + 4, filteredEvents.length);
+            }
+            renderEvents();
+        });
+    }
+
+    // Month filter change handler
+    if (monthFilter) {
+        monthFilter.addEventListener('change', function() {
+            currentFilter = this.value;
+            displayCount = initialCount; // Reset display count when filter changes
+            renderEvents();
+        });
+    }
+}
 
 // ===== Mobile Navigation =====
 function initNavigation() {

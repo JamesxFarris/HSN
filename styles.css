@@ -234,10 +234,6 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 .logo-img {
     height: 60px;
     width: auto;
-    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
-    background: rgba(255, 255, 255, 0.9);
-    padding: 8px;
-    border-radius: 4px;
     transition: all 0.3s ease;
 }
 
@@ -900,6 +896,53 @@ a.attraction-card:hover {
     margin-bottom: 0.5rem;
 }
 
+.events-filter {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.events-filter label {
+    font-weight: 500;
+    color: var(--text);
+}
+
+.events-filter select {
+    padding: 10px 16px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    font-size: 0.95rem;
+    font-family: inherit;
+    color: var(--text);
+    background: var(--bg);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.events-filter select:hover,
+.events-filter select:focus {
+    border-color: var(--primary-light);
+    outline: none;
+}
+
+.events-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.no-events {
+    text-align: center;
+    color: var(--text-light);
+    padding: 2rem;
+    font-style: italic;
+}
+
 .events-note {
     color: var(--text-light);
     margin-bottom: 1.5rem;
@@ -912,7 +955,7 @@ a.attraction-card:hover {
     margin-bottom: 1.5rem;
 }
 
-.event-card {
+a.event-card {
     display: flex;
     align-items: center;
     gap: 16px;
@@ -920,6 +963,15 @@ a.attraction-card:hover {
     padding: 16px;
     border-radius: var(--radius);
     text-align: left;
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+a.event-card:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
 }
 
 .event-date {
@@ -953,6 +1005,103 @@ a.attraction-card:hover {
 .event-info p {
     color: var(--text-light);
     font-size: 0.85rem;
+}
+
+/* ===== Photo Gallery Slideshow ===== */
+.gallery-section {
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-link {
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
+
+.gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 51, 102, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+}
+
+.gallery-overlay span {
+    color: var(--text-white);
+    font-size: 2rem;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.gallery-link:hover .gallery-overlay {
+    opacity: 1;
+}
+
+.gallery-link:hover .gallery-track {
+    animation-play-state: paused;
+}
+
+.gallery-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 51, 102, 0.28);
+    pointer-events: none;
+    z-index: 5;
+}
+
+.gallery-slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.gallery-track {
+    display: flex;
+    gap: 0;
+    animation: scroll-gallery 30s linear infinite;
+    width: max-content;
+}
+
+.gallery-track img {
+    height: 360px;
+    width: 540px;
+    object-fit: cover;
+    flex-shrink: 0;
+    image-rendering: -webkit-optimize-contrast;
+}
+
+.gallery-track img.gallery-sign {
+    object-position: center 25%;
+}
+
+@keyframes scroll-gallery {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .gallery-track img {
+        height: 220px;
+        width: 330px;
+    }
 }
 
 /* ===== Nearby Section ===== */
@@ -992,6 +1141,13 @@ a.attraction-card:hover {
 .nearby-list .name {
     font-weight: 500;
     flex: 1;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.nearby-list a.name:hover {
+    color: var(--primary-light);
 }
 
 .nearby-list .distance {
@@ -1253,6 +1409,197 @@ a.attraction-card:hover {
     font-size: 0.875rem;
 }
 
+/* ===== Gallery Page ===== */
+.gallery-hero {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    padding: 160px 20px 80px;
+    text-align: center;
+    color: var(--text-white);
+}
+
+.gallery-hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 1rem;
+}
+
+.gallery-hero p {
+    font-size: 1.25rem;
+    opacity: 0.9;
+}
+
+.gallery-page-section {
+    padding: 60px 20px;
+    background: var(--bg-alt);
+}
+
+.gallery-filters {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 24px;
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    border-radius: var(--radius);
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary);
+    color: var(--text-white);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 4/3;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+}
+
+.gallery-item-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    color: var(--text-white);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-item-overlay {
+    opacity: 1;
+}
+
+.gallery-item-overlay span {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* Lightbox */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.lightbox.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.lightbox-content {
+    max-width: 90vw;
+    max-height: 90vh;
+    text-align: center;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: var(--radius);
+}
+
+.lightbox-content p {
+    color: var(--text-white);
+    margin-top: 1rem;
+    font-size: 1.1rem;
+}
+
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    background: none;
+    border: none;
+    color: var(--text-white);
+    font-size: 3rem;
+    cursor: pointer;
+    padding: 10px;
+    transition: opacity 0.2s ease;
+    opacity: 0.7;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    opacity: 1;
+}
+
+.lightbox-close {
+    top: 20px;
+    right: 30px;
+}
+
+.lightbox-prev {
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.lightbox-next {
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.gallery-cta {
+    padding: 80px 20px;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    text-align: center;
+    color: var(--text-white);
+}
+
+.gallery-cta h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin-bottom: 1rem;
+}
+
+.gallery-cta p {
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
 /* ===== Responsive Design ===== */
 @media (min-width: 1024px) {
     .reservation-widget {
@@ -1269,6 +1616,61 @@ a.attraction-card:hover {
     }
 }
 
+@media (max-width: 1200px) {
+    .nav-menu {
+        gap: 18px;
+    }
+
+    .nav-menu a {
+        font-size: 0.8rem;
+    }
+
+    .nav-btn {
+        padding: 8px 14px;
+        font-size: 0.8rem;
+    }
+
+    /* Center last row of amenities */
+    .amenities-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .amenity-card {
+        flex: 0 1 calc(33.333% - 16px);
+        min-width: 250px;
+    }
+
+    /* Center last row of attractions */
+    .attractions-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .attractions-grid a.attraction-card {
+        flex: 0 1 calc(33.333% - 16px);
+        min-width: 280px;
+    }
+
+    .attractions-grid a.attraction-card.featured {
+        flex: 0 1 calc(66.666% - 12px);
+    }
+
+    /* Center last row of nearby categories */
+    .nearby-categories {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nearby-category {
+        flex: 0 1 calc(50% - 12px);
+        min-width: 280px;
+    }
+}
+
 @media (max-width: 1024px) {
     .footer-grid {
         grid-template-columns: 1fr 1fr;
@@ -1280,6 +1682,10 @@ a.attraction-card:hover {
 
     .contact-grid {
         grid-template-columns: 1fr;
+    }
+
+    .amenity-card {
+        flex: 0 1 calc(50% - 12px);
     }
 }
 
@@ -1361,6 +1767,19 @@ a.attraction-card:hover {
 
     .hero {
         padding-top: 240px;
+    }
+
+    /* Full width attraction cards on mobile */
+    .attractions-grid a.attraction-card,
+    .attractions-grid a.attraction-card.featured {
+        flex: 1 1 100%;
+        min-width: 100%;
+    }
+
+    /* Full width nearby cards on mobile */
+    .nearby-category {
+        flex: 1 1 100%;
+        min-width: 100%;
     }
 
     .reservation-widget {
