@@ -302,12 +302,14 @@ document.head.appendChild(style);
 // ===== Attraction Slideshows =====
 function initAttractionSlideshows() {
     const slideshows = document.querySelectorAll('.attraction-slideshow');
+    const slideshowData = [];
+    let globalInterval;
+    let isPaused = false;
 
     slideshows.forEach(slideshow => {
         const slides = slideshow.querySelectorAll('.slide');
         const dotsContainer = slideshow.querySelector('.slide-dots');
         let currentIndex = 0;
-        let interval;
 
         // Create dots
         slides.forEach((_, index) => {
@@ -315,39 +317,44 @@ function initAttractionSlideshows() {
             dot.classList.add('slide-dot');
             if (index === 0) dot.classList.add('active');
             dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
-            dot.addEventListener('click', () => goToSlide(index));
+            dot.addEventListener('click', () => {
+                goToSlide(data, index);
+            });
             dotsContainer.appendChild(dot);
         });
 
         const dots = dotsContainer.querySelectorAll('.slide-dot');
 
-        function goToSlide(index) {
-            slides[currentIndex].classList.remove('active');
-            dots[currentIndex].classList.remove('active');
-            currentIndex = index;
-            slides[currentIndex].classList.add('active');
-            dots[currentIndex].classList.add('active');
-        }
+        const data = {
+            slideshow,
+            slides,
+            dots,
+            currentIndex
+        };
 
-        function nextSlide() {
-            const nextIndex = (currentIndex + 1) % slides.length;
-            goToSlide(nextIndex);
-        }
-
-        // Auto-advance slides every 4 seconds
-        function startAutoPlay() {
-            interval = setInterval(nextSlide, 4000);
-        }
-
-        function stopAutoPlay() {
-            clearInterval(interval);
-        }
+        slideshowData.push(data);
 
         // Pause on hover
-        slideshow.addEventListener('mouseenter', stopAutoPlay);
-        slideshow.addEventListener('mouseleave', startAutoPlay);
-
-        // Start auto-play
-        startAutoPlay();
+        slideshow.addEventListener('mouseenter', () => { isPaused = true; });
+        slideshow.addEventListener('mouseleave', () => { isPaused = false; });
     });
+
+    function goToSlide(data, index) {
+        data.slides[data.currentIndex].classList.remove('active');
+        data.dots[data.currentIndex].classList.remove('active');
+        data.currentIndex = index;
+        data.slides[data.currentIndex].classList.add('active');
+        data.dots[data.currentIndex].classList.add('active');
+    }
+
+    function nextAllSlides() {
+        if (isPaused) return;
+        slideshowData.forEach(data => {
+            const nextIndex = (data.currentIndex + 1) % data.slides.length;
+            goToSlide(data, nextIndex);
+        });
+    }
+
+    // Sync all slideshows - advance together every 4 seconds
+    globalInterval = setInterval(nextAllSlides, 4000);
 }
