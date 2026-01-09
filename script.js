@@ -329,10 +329,11 @@ function initUpcomingEvents() {
     if (viewMoreBtn) {
         viewMoreBtn.addEventListener('click', function() {
             const filteredEvents = getFilteredEvents();
+            const increment = window.innerWidth > 768 ? 6 : 4;
             if (displayCount >= filteredEvents.length) {
                 displayCount = initialCount;
             } else {
-                displayCount = Math.min(displayCount + 6, filteredEvents.length);
+                displayCount = Math.min(displayCount + increment, filteredEvents.length);
             }
             renderEvents();
         });
