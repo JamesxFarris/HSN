@@ -1788,13 +1788,27 @@ a.event-card:hover {
         right: 0;
         background: var(--bg);
         flex-direction: column;
-        padding: 20px;
-        gap: 16px;
+        padding: 24px 20px;
+        gap: 20px;
         box-shadow: var(--shadow-lg);
     }
 
     .nav-menu.active {
         display: flex;
+    }
+
+    .nav-menu a {
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--primary-dark);
+        padding: 8px 0;
+    }
+
+    .nav-menu .nav-btn {
+        color: var(--text-white) !important;
+        text-align: center;
+        padding: 14px 20px;
+        font-size: 1.1rem;
     }
 
     .hero {
@@ -1882,7 +1896,28 @@ a.event-card:hover {
     }
 
     .amenities-grid {
-        grid-template-columns: 1fr;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .amenity-card {
+        padding: 16px;
+    }
+
+    .amenity-card h3 {
+        font-size: 0.9rem;
+    }
+
+    .amenity-card p {
+        font-size: 0.75rem;
+        line-height: 1.4;
+    }
+
+    .amenity-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 12px;
     }
 
     .nearby-categories {
