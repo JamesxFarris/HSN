@@ -1246,6 +1246,10 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
         padding-top: 180px;
     }
 
+    .hero h1 {
+        margin-top: 2rem;
+    }
+
     .reservation-widget {
         padding: 24px 16px;
     }
