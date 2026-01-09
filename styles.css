@@ -204,17 +204,20 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 
 .main-nav {
     padding: 16px 0;
+    transition: all 0.3s ease;
 }
 
 .main-nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 .logo {
     display: flex;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 .logo-img {
@@ -1258,12 +1261,27 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     }
 
     .main-nav .container {
-        justify-content: center;
+        justify-content: space-between;
         position: relative;
+    }
+
+    .main-nav.scrolled .container {
+        justify-content: center;
+    }
+
+    .main-nav.scrolled .logo {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .nav-toggle {
         display: flex;
+        position: relative;
+        z-index: 10;
+    }
+
+    .main-nav.scrolled .nav-toggle {
         position: absolute;
         right: 20px;
     }
