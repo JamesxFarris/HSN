@@ -1107,6 +1107,7 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 
 .footer-contact a {
     color: rgba(255, 255, 255, 0.7);
+    white-space: nowrap;
 }
 
 .footer-contact a:hover {
