@@ -348,14 +348,14 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 51, 102, 0.7);
+    background: rgba(0, 0, 0, 0.3);
     z-index: 1;
 }
 
 .reservation-widget {
     position: relative;
     z-index: 2;
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: var(--radius);
     padding: 32px;
     box-shadow: var(--shadow-lg);
