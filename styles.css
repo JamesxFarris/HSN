@@ -325,9 +325,8 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('images/header-bg.jpg') center/cover no-repeat;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 50%, var(--accent) 100%);
     padding: 140px 20px 80px;
-    overflow: hidden;
 }
 
 .hero::before {
@@ -337,8 +336,8 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(12, 74, 110, 0.75) 0%, rgba(14, 65, 112, 0.85) 50%, rgba(20, 94, 142, 0.75) 100%);
-    z-index: 0;
+    background: url('images/hero-bg.jpg') center/cover no-repeat;
+    opacity: 0.4;
 }
 
 .hero-overlay {
@@ -347,8 +346,7 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
-    z-index: 0;
+    background: linear-gradient(180deg, rgba(0, 51, 102, 0.85) 0%, rgba(14, 65, 112, 0.9) 100%);
 }
 
 .hero-content {
@@ -361,18 +359,13 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 .hero h1 {
     color: var(--text-white);
     margin-bottom: 1rem;
-    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.6), 0 2px 4px rgba(0, 0, 0, 0.4);
-    font-size: 3.5rem;
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .hero > .hero-content > p {
-    color: rgba(255, 255, 255, 0.95);
-    font-size: 1.375rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.25rem;
     margin-bottom: 2.5rem;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
-    font-weight: 400;
 }
 
 /* ===== Reservation Widget ===== */
@@ -382,8 +375,7 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     margin: 0 auto;
     border-radius: var(--radius-lg);
     overflow: hidden;
-    /* Replace with your own beach/hotel image */
-    background: url('https://www.holidaysandsnorth.com/images/sliders/1100crop/Home1.jpg') center/cover no-repeat;
+    background: url('images/header-bg.jpg') center/cover no-repeat;
 }
 
 .reservation-wrapper::before {
@@ -393,7 +385,18 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, rgba(12, 74, 110, 0.75) 0%, rgba(14, 65, 112, 0.85) 50%, rgba(20, 94, 142, 0.75) 100%);
+    z-index: 1;
+}
+
+.reservation-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.4) 100%);
     z-index: 1;
 }
 
