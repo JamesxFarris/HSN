@@ -35,7 +35,7 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     font-size: 16px;
     line-height: 1.6;
     color: var(--text);
@@ -1739,8 +1739,9 @@ a.event-card:hover {
 
     .mobile-contact a {
         color: var(--primary-dark);
-        font-size: 0.65rem;
+        font-size: 0.75rem;
         white-space: nowrap;
+        font-weight: 500;
     }
 
     .mobile-contact a:hover {
