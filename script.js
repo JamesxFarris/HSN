@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
     initReservationForm();
     initRoomToggle();
+    initViewMore();
     initSmoothScroll();
     setMinDates();
 });
@@ -136,6 +137,8 @@ function initRoomToggle() {
     const toggleBtns = document.querySelectorAll('.toggle-btn');
     const oceanfrontRooms = document.getElementById('oceanfront-rooms');
     const streetRooms = document.getElementById('street-rooms');
+    const oceanfrontViewMore = document.getElementById('oceanfront-view-more');
+    const oceanfrontMoreRooms = document.getElementById('oceanfront-more-rooms');
 
     if (toggleBtns.length && oceanfrontRooms && streetRooms) {
         toggleBtns.forEach(btn => {
@@ -150,13 +153,43 @@ function initRoomToggle() {
                 if (view === 'oceanfront') {
                     oceanfrontRooms.classList.add('active');
                     streetRooms.classList.remove('active');
+                    // Show View More button for oceanfront
+                    if (oceanfrontViewMore) oceanfrontViewMore.style.display = 'block';
                 } else {
                     oceanfrontRooms.classList.remove('active');
                     streetRooms.classList.add('active');
+                    // Hide View More button and extra rooms for street view
+                    if (oceanfrontViewMore) oceanfrontViewMore.style.display = 'none';
+                    if (oceanfrontMoreRooms) oceanfrontMoreRooms.classList.remove('show');
                 }
             });
         });
     }
+}
+
+// ===== View More Rooms Toggle =====
+function initViewMore() {
+    const viewMoreBtns = document.querySelectorAll('.view-more-btn');
+
+    viewMoreBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const targetId = this.dataset.target;
+            const targetEl = document.getElementById(targetId);
+            const containerEl = this.closest('.view-more-container');
+
+            if (targetEl) {
+                targetEl.classList.toggle('show');
+
+                if (targetEl.classList.contains('show')) {
+                    this.textContent = 'Show Less';
+                    // Scroll to the newly visible rooms
+                    targetEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } else {
+                    this.textContent = 'View More Oceanfront Rooms';
+                }
+            }
+        });
+    });
 }
 
 // ===== Smooth Scroll for Anchor Links =====

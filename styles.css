@@ -331,13 +331,34 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 }
 
 /* ===== Reservation Widget ===== */
+.reservation-wrapper {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+}
+
+.reservation-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Replace with your own beach/hotel image */
+    background: url('https://www.holidaysandsnorth.com/images/sliders/1100crop/Home1.jpg') center/cover no-repeat;
+    filter: brightness(0.4);
+}
+
 .reservation-widget {
-    background: var(--bg);
+    position: relative;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.95);
     border-radius: var(--radius-lg);
     padding: 32px;
     box-shadow: var(--shadow-lg);
     max-width: 800px;
-    margin: 0 auto;
+    margin: 16px;
 }
 
 .reservation-widget h2 {
@@ -520,6 +541,25 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     border-radius: 20px;
     font-size: 0.8rem;
     color: var(--text-light);
+}
+
+/* View More Rooms */
+.view-more-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.view-more-btn {
+    min-width: 250px;
+}
+
+.more-rooms {
+    display: none;
+    margin-top: 1rem;
+}
+
+.more-rooms.show {
+    display: grid;
 }
 
 /* ===== Amenities Section ===== */
