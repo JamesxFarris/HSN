@@ -907,6 +907,7 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 24px;
+    align-items: start;
 }
 
 .nearby-category {
