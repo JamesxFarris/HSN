@@ -256,6 +256,11 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     transition: var(--transition);
 }
 
+/* Mobile header info - hidden on desktop */
+.mobile-header-info {
+    display: none;
+}
+
 .nav-menu {
     display: flex;
     align-items: center;
@@ -1694,58 +1699,77 @@ a.event-card:hover {
 }
 
 @media (max-width: 768px) {
-    /* Hide blue bar on mobile, make header white with blue text */
+    /* Hide header-top completely on mobile */
     .header-top {
-        background: var(--bg);
-        padding: 6px 0;
-    }
-
-    .header-top .container {
-        flex-direction: row;
-        gap: 8px;
-        align-items: center;
-        font-size: 0.75rem;
-    }
-
-    .contact-bar {
-        flex-direction: row;
-        gap: 12px;
-        flex: 1;
-        justify-content: center;
-        font-size: 0.7rem;
-    }
-
-    .contact-bar a,
-    .social-links a {
-        color: var(--primary-dark);
-    }
-
-    .contact-bar a:hover,
-    .social-links a:hover {
-        color: var(--primary);
-    }
-
-    .social-links {
-        gap: 8px;
-        font-size: 0.85rem;
+        display: none;
     }
 
     .main-nav {
-        padding: 10px 0;
+        padding: 12px 0;
+    }
+
+    .main-nav .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        position: relative;
     }
 
     .logo-img {
-        height: 45px;
+        height: 40px;
+    }
+
+    /* Mobile header info layout */
+    .mobile-header-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+        justify-content: center;
+    }
+
+    .mobile-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .mobile-contact a {
+        color: var(--primary-dark);
+        font-size: 0.65rem;
+        white-space: nowrap;
+    }
+
+    .mobile-contact a:hover {
+        color: var(--primary);
+    }
+
+    .mobile-social {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .mobile-social a {
+        color: var(--primary-dark);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .mobile-social a:hover {
+        color: var(--primary);
+    }
+
+    .mobile-social svg {
+        width: 16px;
+        height: 16px;
     }
 
     /* Disable scroll animation on mobile since no blue bar */
     .header.scrolled .main-nav {
         transform: none;
-    }
-
-    .main-nav .container {
-        justify-content: space-between;
-        position: relative;
     }
 
     .nav-toggle {
