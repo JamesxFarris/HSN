@@ -1813,6 +1813,7 @@ a.event-card:hover {
         text-align: center;
         padding: 14px 20px;
         font-size: 1.1rem;
+        margin-top: 8px;
     }
 
     /* Mobile gallery button */
