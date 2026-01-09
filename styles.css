@@ -1334,25 +1334,36 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 }
 
 @media (max-width: 768px) {
-    /* Hide blue bar on mobile, make header white with blue text */
-    .header-top {
+    /* Merge everything into one row on mobile */
+    .header {
         background: var(--bg);
-        padding: 6px 0;
+    }
+
+    .header-top {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: auto;
+        padding: 0;
+        background: transparent;
     }
 
     .header-top .container {
-        flex-direction: row;
-        gap: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
         align-items: center;
-        font-size: 0.75rem;
+        padding: 0;
     }
 
+    /* Contact info in center - very compact */
     .contact-bar {
+        display: flex;
         flex-direction: row;
-        gap: 12px;
-        flex: 1;
-        justify-content: center;
-        font-size: 0.7rem;
+        gap: 8px;
+        font-size: 0.6rem;
+        line-height: 1.1;
     }
 
     .contact-bar a,
@@ -1360,36 +1371,41 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
         color: var(--primary-dark);
     }
 
-    .contact-bar a:hover,
-    .social-links a:hover {
-        color: var(--primary);
-    }
-
     .social-links {
-        gap: 8px;
-        font-size: 0.85rem;
+        display: flex;
+        gap: 6px;
+        font-size: 0.7rem;
     }
 
+    /* Main nav holds logo and hamburger */
     .main-nav {
-        padding: 10px 0;
-    }
-
-    .logo-img {
-        height: 45px;
-    }
-
-    /* Disable scroll animation on mobile since no blue bar */
-    .header.scrolled .main-nav {
-        transform: none;
+        padding: 8px 0;
+        background: var(--bg);
     }
 
     .main-nav .container {
-        justify-content: space-between;
-        position: relative;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .logo {
+        order: 1;
+    }
+
+    .logo-img {
+        height: 38px;
     }
 
     .nav-toggle {
         display: flex;
+        order: 3;
+    }
+
+    /* Disable scroll animation on mobile */
+    .header.scrolled .main-nav {
+        transform: none;
     }
 
     .nav-menu {
