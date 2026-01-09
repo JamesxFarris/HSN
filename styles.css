@@ -171,11 +171,13 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 .contact-bar {
     display: flex;
     gap: 24px;
+    flex-wrap: wrap;
 }
 
 .contact-bar a {
     color: var(--text-white);
     opacity: 0.9;
+    white-space: nowrap;
 }
 
 .contact-bar a:hover {
@@ -323,10 +325,9 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 }
 
 .hero h1 {
-    color: #ff0000;
+    color: var(--text-white);
     margin-bottom: 1rem;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    font-size: 4rem;
 }
 
 .hero > .hero-content > p {
@@ -1223,7 +1224,18 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 @media (max-width: 768px) {
     .header-top .container {
         flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .contact-bar {
+        flex-direction: column;
         gap: 8px;
+        align-items: center;
+    }
+
+    .social-links {
+        justify-content: center;
     }
 
     .main-nav .container {
@@ -1293,6 +1305,14 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 }
 
 @media (max-width: 480px) {
+    .header-top {
+        font-size: 0.8rem;
+    }
+
+    .contact-bar {
+        gap: 6px;
+    }
+
     .form-row {
         grid-template-columns: 1fr;
     }
