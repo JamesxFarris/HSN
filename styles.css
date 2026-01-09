@@ -218,6 +218,10 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 .logo-img {
     height: 60px;
     width: auto;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+    background: rgba(255, 255, 255, 0.9);
+    padding: 8px;
+    border-radius: 4px;
 }
 
 .nav-toggle {
@@ -1221,8 +1225,15 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
         gap: 8px;
     }
 
+    .main-nav .container {
+        justify-content: center;
+        position: relative;
+    }
+
     .nav-toggle {
         display: flex;
+        position: absolute;
+        right: 20px;
     }
 
     .nav-menu {
