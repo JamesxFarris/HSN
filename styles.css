@@ -40,6 +40,7 @@ body {
     line-height: 1.6;
     color: var(--text);
     background: var(--bg);
+    overflow-x: hidden;
 }
 
 img {
@@ -1331,6 +1332,27 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 }
 
 @media (max-width: 768px) {
+    /* Hide blue bar on mobile, make header white with blue text */
+    .header-top {
+        background: var(--bg);
+        padding: 12px 0;
+    }
+
+    .contact-bar a,
+    .social-links a {
+        color: var(--primary-dark);
+    }
+
+    .contact-bar a:hover,
+    .social-links a:hover {
+        color: var(--primary);
+    }
+
+    /* Disable scroll animation on mobile since no blue bar */
+    .header.scrolled .main-nav {
+        transform: none;
+    }
+
     .header-top .container {
         flex-direction: column;
         gap: 12px;
