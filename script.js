@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initViewMore();
     initSmoothScroll();
     setMinDates();
+    initAttractionSlideshows();
 });
 
 // ===== Mobile Navigation =====
@@ -297,3 +298,56 @@ style.textContent = `
     }
 `;
 document.head.appendChild(style);
+
+// ===== Attraction Slideshows =====
+function initAttractionSlideshows() {
+    const slideshows = document.querySelectorAll('.attraction-slideshow');
+
+    slideshows.forEach(slideshow => {
+        const slides = slideshow.querySelectorAll('.slide');
+        const dotsContainer = slideshow.querySelector('.slide-dots');
+        let currentIndex = 0;
+        let interval;
+
+        // Create dots
+        slides.forEach((_, index) => {
+            const dot = document.createElement('button');
+            dot.classList.add('slide-dot');
+            if (index === 0) dot.classList.add('active');
+            dot.setAttribute('aria-label', `Go to slide ${index + 1}`);
+            dot.addEventListener('click', () => goToSlide(index));
+            dotsContainer.appendChild(dot);
+        });
+
+        const dots = dotsContainer.querySelectorAll('.slide-dot');
+
+        function goToSlide(index) {
+            slides[currentIndex].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
+            currentIndex = index;
+            slides[currentIndex].classList.add('active');
+            dots[currentIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            const nextIndex = (currentIndex + 1) % slides.length;
+            goToSlide(nextIndex);
+        }
+
+        // Auto-advance slides every 4 seconds
+        function startAutoPlay() {
+            interval = setInterval(nextSlide, 4000);
+        }
+
+        function stopAutoPlay() {
+            clearInterval(interval);
+        }
+
+        // Pause on hover
+        slideshow.addEventListener('mouseenter', stopAutoPlay);
+        slideshow.addEventListener('mouseleave', startAutoPlay);
+
+        // Start auto-play
+        startAutoPlay();
+    });
+}
