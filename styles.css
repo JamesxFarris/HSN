@@ -1830,7 +1830,9 @@ a.event-card:hover {
     }
 
     .hero {
-        padding-top: 240px;
+        padding-top: 160px;
+        min-height: auto;
+        padding-bottom: 40px;
     }
 
     /* Full width attraction cards on mobile */
@@ -1847,7 +1849,7 @@ a.event-card:hover {
     }
 
     .reservation-widget {
-        padding: 28px 24px;
+        padding: 20px 18px;
     }
 
     .reservation-widget h2 {
