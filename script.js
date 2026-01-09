@@ -546,9 +546,9 @@ function initResponsiveRooms() {
         const totalHidden = showingAll ? 0 : hiddenInitial + moreRoomCards.length;
 
         if (showingAll) {
-            viewMoreBtn.textContent = 'Show Less';
+            viewMoreBtn.innerHTML = 'Show Less';
         } else if (totalHidden > 0) {
-            viewMoreBtn.textContent = `View More Oceanfront Rooms (${totalHidden} more)`;
+            viewMoreBtn.innerHTML = `View More Oceanfront Rooms<br><span class="btn-subtext">(${totalHidden} more)</span>`;
         }
 
         // Show/hide button

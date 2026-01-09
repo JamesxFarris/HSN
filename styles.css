@@ -156,6 +156,14 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     color: var(--text-white);
 }
 
+.btn-subtext {
+    display: block;
+    font-size: 0.8em;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-top: 4px;
+}
+
 /* ===== Header ===== */
 .header {
     position: fixed;
