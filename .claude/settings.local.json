@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.mamamiapizzeriamb.com)",
+      "WebFetch(domain:myrtlebeachburger.com)",
+      "WebFetch(domain:www.holidaysandsnorth.com)",
+      "WebSearch",
+      "WebFetch(domain:skywheelmb.com)",
+      "WebFetch(domain:www.familykingdomfun.com)",
+      "WebFetch(domain:www.ripleyaquariums.com)",
+      "WebFetch(domain:www.ripleys.com)",
+      "WebFetch(domain:www.broadwayatthebeach.com)",
+      "WebFetch(domain:www.visitmyrtlebeach.com)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "Bash(git init:*)",
+      "Bash(git remote add:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

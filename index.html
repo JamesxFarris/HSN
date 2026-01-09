@@ -1,0 +1,974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holiday Sands North | Oceanfront Hotel in Myrtle Beach, SC</title>
+    <meta name="description" content="Family-operated oceanfront hotel on the Myrtle Beach Boardwalk. Lazy river, pools, and steps from Family Kingdom. Book your beach vacation today!">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="contact-bar">
+                    <a href="tel:1-800-448-1091" class="phone">1-800-448-1091</a>
+                    <a href="mailto:res-info@holidaysandsnorth.com" class="email">res-info@holidaysandsnorth.com</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/HolidaySandsNorth" target="_blank" rel="noopener" aria-label="Facebook">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                    <a href="https://twitter.com/HolidaySandsN" target="_blank" rel="noopener" aria-label="Twitter">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <a href="#" class="logo">
+                    <img src="https://www.holidaysandsnorth.com/templates/holidaysands/images/logo.png" alt="Holiday Sands North" class="logo-img">
+                </a>
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-menu">
+                    <li><a href="#rooms">Rooms</a></li>
+                    <li><a href="#amenities">Amenities</a></li>
+                    <li><a href="#dining">Dining</a></li>
+                    <li><a href="#things-to-do">Things To Do</a></li>
+                    <li><a href="#nearby">Nearby</a></li>
+                    <li><a href="#policies">Policies</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="nav-btn">Book Now</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section with Reservation -->
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Your Oceanfront Escape Awaits</h1>
+            <p>Family-operated hotel on the Myrtle Beach Boardwalk since 1985</p>
+
+            <!-- Reservation Widget -->
+            <div class="reservation-widget">
+                <h2>Book Your Stay</h2>
+                <form id="reservation-form" class="reservation-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="checkin">Check In</label>
+                            <input type="date" id="checkin" name="checkin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="checkout">Check Out</label>
+                            <input type="date" id="checkout" name="checkout" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="adults">Adults</label>
+                            <select id="adults" name="adults">
+                                <option value="1">1</option>
+                                <option value="2" selected>2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="children">Children</label>
+                            <select id="children" name="children">
+                                <option value="0" selected>0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="rooms">Rooms</label>
+                            <select id="rooms" name="rooms">
+                                <option value="1" selected>1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Check Availability</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section id="rooms" class="section rooms-section">
+        <div class="container">
+            <h2 class="section-title">Our Accommodations</h2>
+            <p class="section-subtitle">Choose your perfect view</p>
+
+            <!-- View Toggle -->
+            <div class="view-toggle">
+                <button class="toggle-btn active" data-view="oceanfront">Oceanfront Views</button>
+                <button class="toggle-btn" data-view="street">Street Views</button>
+            </div>
+
+            <!-- Oceanfront Rooms (Types A, B, C) -->
+            <div id="oceanfront-rooms" class="rooms-grid active">
+                <!-- Type A-1 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/A1_3D_300-2023.png" alt="Room Type A-1">
+                        <span class="room-badge">Oceanfront</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type A-1 Suite</h3>
+                        <p>2 Bedroom oceanfront suite with 2 queen beds and a queen sleeper.</p>
+                        <ul class="room-features">
+                            <li>2 Bedrooms</li>
+                            <li>2 Queens + Queen Sleeper</li>
+                            <li>Full Kitchen</li>
+                            <li>Ocean View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+                <!-- Type A-2 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/A2_3D_300.png" alt="Room Type A-2">
+                        <span class="room-badge">Oceanfront</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type A-2 Suite</h3>
+                        <p>2 Bedroom oceanfront suite with 3 queen beds.</p>
+                        <ul class="room-features">
+                            <li>2 Bedrooms</li>
+                            <li>3 Queen Beds</li>
+                            <li>Full Kitchen</li>
+                            <li>Ocean View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+                <!-- Type B-1 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/B1_3D_300.png" alt="Room Type B-1">
+                        <span class="room-badge">Oceanfront</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type B-1</h3>
+                        <p>Oceanfront room with 2 queen beds and full kitchen.</p>
+                        <ul class="room-features">
+                            <li>2 Queen Beds</li>
+                            <li>Full Kitchen</li>
+                            <li>Ocean View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+                <!-- Type B-1N -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/B1N_3D_300.png" alt="Room Type B-1N">
+                        <span class="room-badge">Oceanfront</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type B-1N</h3>
+                        <p>Oceanfront room with 2 queen beds. No kitchen.</p>
+                        <ul class="room-features">
+                            <li>2 Queen Beds</li>
+                            <li>No Kitchen</li>
+                            <li>Ocean View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+                <!-- Type B-2 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/B2_3D_300.png" alt="Room Type B-2">
+                        <span class="room-badge">Oceanfront</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type B-2</h3>
+                        <p>Oceanfront room with 1 queen bed and full size sleeper sofa.</p>
+                        <ul class="room-features">
+                            <li>1 Queen Bed</li>
+                            <li>Full Sleeper Sofa</li>
+                            <li>Full Kitchen</li>
+                            <li>Ocean View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+                <!-- Type B-2N -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/B2N_3D_300.png" alt="Room Type B-2N">
+                        <span class="room-badge">Oceanfront</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type B-2N</h3>
+                        <p>Oceanfront room with 1 queen bed and full size sleeper sofa. No kitchen.</p>
+                        <ul class="room-features">
+                            <li>1 Queen Bed</li>
+                            <li>Full Sleeper Sofa</li>
+                            <li>No Kitchen</li>
+                            <li>Ocean View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+                <!-- Type C-1 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/C1_3D_300.png" alt="Room Type C-1">
+                        <span class="room-badge">Oceanfront</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type C-1</h3>
+                        <p>Oceanfront room with 1 queen bed and twin sleeper.</p>
+                        <ul class="room-features">
+                            <li>1 Queen Bed</li>
+                            <li>Twin Sleeper</li>
+                            <li>Full Kitchen</li>
+                            <li>Ocean View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+                <!-- Type C-1N -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/C1N_3D_300.png" alt="Room Type C-1N">
+                        <span class="room-badge">Oceanfront</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type C-1N</h3>
+                        <p>Oceanfront room with 1 queen bed and twin sleeper. No kitchen.</p>
+                        <ul class="room-features">
+                            <li>1 Queen Bed</li>
+                            <li>Twin Sleeper</li>
+                            <li>No Kitchen</li>
+                            <li>Ocean View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+                <!-- Type C-2 -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/C2_3D_300.png" alt="Room Type C-2">
+                        <span class="room-badge">Oceanfront</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type C-2</h3>
+                        <p>Oceanfront room with king bed and twin sleeper.</p>
+                        <ul class="room-features">
+                            <li>King Bed</li>
+                            <li>Twin Sleeper</li>
+                            <li>Full Kitchen</li>
+                            <li>Ocean View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+                <!-- Type C-2N -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/C2N_3D_300.png" alt="Room Type C-2N">
+                        <span class="room-badge">Oceanfront</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type C-2N</h3>
+                        <p>Oceanfront room with king bed and twin sleeper. No kitchen.</p>
+                        <ul class="room-features">
+                            <li>King Bed</li>
+                            <li>Twin Sleeper</li>
+                            <li>No Kitchen</li>
+                            <li>Ocean View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Street View Rooms (Types D, E, F, G, H, I) -->
+            <div id="street-rooms" class="rooms-grid">
+                <!-- Type D -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/D_3D_300.png" alt="Room Type D">
+                        <span class="room-badge street">Street View</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type D</h3>
+                        <p>Street view room with 2 queen beds. Only street view with kitchen!</p>
+                        <ul class="room-features">
+                            <li>2 Queen Beds</li>
+                            <li>Full Kitchen</li>
+                            <li>Street View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+                <!-- Type E -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/E_3D_300.png" alt="Room Type E">
+                        <span class="room-badge street">Street View</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type E</h3>
+                        <p>Street view room with 2 full size beds. No kitchen.</p>
+                        <ul class="room-features">
+                            <li>2 Full Beds</li>
+                            <li>No Kitchen</li>
+                            <li>Street View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+                <!-- Type F -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/F_3D_300.png" alt="Room Type F">
+                        <span class="room-badge street">Street View</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type F</h3>
+                        <p>Cozy street view room with 1 queen bed. No kitchen.</p>
+                        <ul class="room-features">
+                            <li>1 Queen Bed</li>
+                            <li>No Kitchen</li>
+                            <li>Street View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+                <!-- Type G -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/G_3D_300.png" alt="Room Type G">
+                        <span class="room-badge street">Street View</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type G</h3>
+                        <p>2 Bedroom street view with 1 full bed and 1 queen bed. No kitchen.</p>
+                        <ul class="room-features">
+                            <li>2 Bedrooms</li>
+                            <li>1 Full + 1 Queen</li>
+                            <li>No Kitchen</li>
+                            <li>Street View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+                <!-- Type H -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/H_3D_300.png" alt="Room Type H">
+                        <span class="room-badge street">Street View</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type H</h3>
+                        <p>Street view room with 2 full beds. No kitchen.</p>
+                        <ul class="room-features">
+                            <li>2 Full Beds</li>
+                            <li>No Kitchen</li>
+                            <li>Street View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+                <!-- Type I -->
+                <div class="room-card">
+                    <div class="room-image">
+                        <img src="https://www.holidaysandsnorth.com/images/room_types/I_3D_300.png" alt="Room Type I - Handicap Accessible">
+                        <span class="room-badge street">Accessible</span>
+                    </div>
+                    <div class="room-info">
+                        <h3>Type I - Accessible</h3>
+                        <p>Handicap accessible room with 2 full size beds.</p>
+                        <ul class="room-features">
+                            <li>2 Full Beds</li>
+                            <li>ADA Accessible</li>
+                            <li>Street View</li>
+                        </ul>
+                        <a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank" class="btn btn-secondary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Amenities Section -->
+    <section id="amenities" class="section amenities-section">
+        <div class="container">
+            <h2 class="section-title">Resort Amenities</h2>
+            <p class="section-subtitle">Everything you need for the perfect beach vacation</p>
+
+            <div class="amenities-grid">
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12h20M2 12c0 4.418 4.477 8 10 8s10-3.582 10-8M2 12c0-4.418 4.477-8 10-8s10 3.582 10 8"/><path d="M12 4v16"/></svg>
+                    </div>
+                    <h3>Lazy River</h3>
+                    <p>Float the day away on our relaxing lazy river. Fun for all ages!</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><ellipse cx="12" cy="14" rx="9" ry="5"/><path d="M3 14v2c0 2.761 4.03 5 9 5s9-2.239 9-5v-2"/><path d="M12 4v4m-4-2h8"/></svg>
+                    </div>
+                    <h3>Outdoor Pool</h3>
+                    <p>Soak up the sun at our outdoor pool with ocean views.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="6" width="18" height="12" rx="2"/><ellipse cx="12" cy="12" rx="5" ry="3"/></svg>
+                    </div>
+                    <h3>Indoor Pool</h3>
+                    <p>Enjoy swimming year-round in our climate-controlled indoor pool.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2 2"/></svg>
+                    </div>
+                    <h3>Kiddie Pool</h3>
+                    <p>A safe, shallow pool area designed for our youngest guests.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 14c0-2 2-3 4-3s4 1 4 3M4 14v4h8v-4M12 14c0-2 2-3 4-3s4 1 4 3M12 14v4h8v-4"/><circle cx="8" cy="7" r="2"/><circle cx="16" cy="7" r="2"/></svg>
+                    </div>
+                    <h3>Hot Tub</h3>
+                    <p>Relax and unwind in our soothing hot tub after a day at the beach.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 4v16M10 4v16M18 4v16M6 8h12M6 12h12M6 16h4"/></svg>
+                    </div>
+                    <h3>Fitness Center</h3>
+                    <p>Stay active during your vacation. Located on the 3rd floor of the South Tower.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></svg>
+                    </div>
+                    <h3>Free WiFi</h3>
+                    <p>Stay connected with complimentary high-speed internet throughout the property.</p>
+                </div>
+                <div class="amenity-card">
+                    <div class="amenity-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+                    </div>
+                    <h3>Ice Machines</h3>
+                    <p>Conveniently located on floors 3 & 7 (North Tower) and floors 2 & 3 (South Tower).</p>
+                </div>
+            </div>
+
+            <!-- Building Info -->
+            <div class="building-info">
+                <h3>Building Information</h3>
+                <div class="building-info-grid">
+                    <div class="info-item">
+                        <strong>North Tower (Office Building)</strong>
+                        <ul>
+                            <li>Ice Machines: Floors 3 & 7</li>
+                            <li>Trash & Laundry Drop-off: End of each hallway</li>
+                        </ul>
+                    </div>
+                    <div class="info-item">
+                        <strong>South Tower (Above Restaurant)</strong>
+                        <ul>
+                            <li>Ice Machines: Floors 2 & 3</li>
+                            <li>Fitness Center: Floor 3</li>
+                            <li>Dining: Floor 2 (Mama Mia's & Beach Burgers)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dining Section -->
+    <section id="dining" class="section dining-section">
+        <div class="container">
+            <h2 class="section-title">On-Site Dining</h2>
+            <p class="section-subtitle">Delicious options without leaving the resort</p>
+
+            <div class="dining-grid">
+                <div class="dining-card">
+                    <div class="dining-image">
+                        <img src="https://www.mamamiapizzeriamb.com/wp-content/uploads/2023/04/IMG_2956-scaled.jpeg" alt="Mama Mia's Pizzeria">
+                    </div>
+                    <div class="dining-info">
+                        <h3>Mama Mia's Pizzeria</h3>
+                        <p class="dining-location">South Tower, 2nd Floor</p>
+                        <p>Authentic pizza, pasta, subs, wings, and ice cream. Family-friendly dining with a warm atmosphere.</p>
+                        <p class="dining-highlight">Room delivery available when not busy!</p>
+                        <div class="dining-contact">
+                            <a href="tel:843-626-2642" class="phone">(843) 626-2642</a>
+                            <a href="https://www.mamamiapizzeriamb.com/" target="_blank" class="btn btn-secondary">View Menu</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dining-card">
+                    <div class="dining-image">
+                        <img src="https://myrtlebeachburger.com/images/b01.jpg" alt="Beach Burgers">
+                    </div>
+                    <div class="dining-info">
+                        <h3>Beach Burgers</h3>
+                        <p class="dining-location">South Tower, 2nd Floor</p>
+                        <p>Gourmet burgers, subs, fresh salads, appetizers, and desserts. Perfect for a quick bite or full meal.</p>
+                        <p class="dining-highlight">Online ordering available!</p>
+                        <div class="dining-contact">
+                            <a href="tel:843-839-0235" class="phone">(843) 839-0235</a>
+                            <a href="https://myrtlebeachburger.com/" target="_blank" class="btn btn-secondary">Order Online</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Things To Do Section -->
+    <section id="things-to-do" class="section things-section">
+        <div class="container">
+            <h2 class="section-title">Things To Do</h2>
+            <p class="section-subtitle">Endless entertainment in Myrtle Beach</p>
+
+            <div class="attractions-grid">
+                <div class="attraction-card featured">
+                    <div class="attraction-image">
+                        <img src="images/family-kingdom.jpg" alt="Family Kingdom Amusement Park">
+                    </div>
+                    <div class="attraction-info">
+                        <span class="distance">Walking Distance</span>
+                        <h3>Family Kingdom Amusement Park</h3>
+                        <p>Classic oceanfront amusement park with over 35 rides including the legendary Swamp Fox roller coaster. Just steps from our front door!</p>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://cdn-lhdnb.nitrocdn.com/RLyHUuAnwSkVyUxOYIkoAOQeiewIqDSW/assets/images/optimized/rev-8283805/skywheelmb.com/wp-content/themes/SkyWheel-2023/images/home/home-01.jpg" alt="Myrtle Beach SkyWheel">
+                    </div>
+                    <div class="attraction-info">
+                        <span class="distance">On the Boardwalk</span>
+                        <h3>Myrtle Beach SkyWheel</h3>
+                        <p>Soar 187 feet above the ocean in climate-controlled gondolas. Stunning views day and night with over 1 million LED lights!</p>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://ripleys.directus.app/assets/e69c9405-285b-468d-b9e4-adc1323daf2e.jpg" alt="Ripley's Aquarium">
+                    </div>
+                    <div class="attraction-info">
+                        <span class="distance">Broadway at the Beach</span>
+                        <h3>Ripley's Aquarium</h3>
+                        <p>Walk through an underwater tunnel surrounded by sharks! Touch stingrays, see penguins, and explore amazing marine life.</p>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="images/boardwalk.jpg" alt="Myrtle Beach Boardwalk">
+                    </div>
+                    <div class="attraction-info">
+                        <span class="distance">On Our Doorstep</span>
+                        <h3>Myrtle Beach Boardwalk</h3>
+                        <p>1.2 miles of oceanfront promenade with shops, restaurants, arcades, and entertainment.</p>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://www.broadwayatthebeach.com/wp-content/uploads/2024/05/BATB-Video-First-Frame-Homepage3-scaled.jpg" alt="Broadway at the Beach">
+                    </div>
+                    <div class="attraction-info">
+                        <span class="distance">5 Minutes</span>
+                        <h3>Broadway at the Beach</h3>
+                        <p>350-acre entertainment complex with shopping, dining, attractions, and nightlife.</p>
+                    </div>
+                </div>
+                <div class="attraction-card">
+                    <div class="attraction-image">
+                        <img src="https://www.visitmyrtlebeach.com/sites/default/files/styles/hero/public/2020-03/golf-702x395.jpg" alt="Myrtle Beach Golf">
+                    </div>
+                    <div class="attraction-info">
+                        <span class="distance">Various Locations</span>
+                        <h3>World-Class Golf</h3>
+                        <p>Over 100 golf courses in the area. Ask about our golf packages!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Local Events -->
+            <div class="local-events">
+                <h3>Upcoming Local Events</h3>
+                <p class="events-note">Check out what's happening in Myrtle Beach during your stay</p>
+                <div id="events-container" class="events-grid">
+                    <!-- Events will be loaded dynamically or can be updated manually -->
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="month">Year</span>
+                            <span class="day">Round</span>
+                        </div>
+                        <div class="event-info">
+                            <h4>Myrtle Beach Boardwalk</h4>
+                            <p>Live entertainment, street performers, and seasonal festivals throughout the year.</p>
+                        </div>
+                    </div>
+                    <div class="event-card">
+                        <div class="event-date">
+                            <span class="month">Weekly</span>
+                            <span class="day">Events</span>
+                        </div>
+                        <div class="event-info">
+                            <h4>Family Kingdom</h4>
+                            <p>Special events, fireworks nights, and seasonal celebrations.</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://www.visitmyrtlebeach.com/things-to-do/events/" target="_blank" class="btn btn-outline">View All Myrtle Beach Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Nearby Section -->
+    <section id="nearby" class="section nearby-section">
+        <div class="container">
+            <h2 class="section-title">Nearby Essentials</h2>
+            <p class="section-subtitle">Convenience just around the corner</p>
+
+            <div class="nearby-categories">
+                <div class="nearby-category">
+                    <h3>Grocery & Convenience</h3>
+                    <ul class="nearby-list">
+                        <li>
+                            <span class="name">Food Lion</span>
+                            <span class="distance">0.5 miles</span>
+                            <a href="https://www.google.com/maps/search/Food+Lion+near+400+N+Ocean+Blvd+Myrtle+Beach+SC" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="name">Walmart Supercenter</span>
+                            <span class="distance">2.3 miles</span>
+                            <a href="https://www.google.com/maps/search/Walmart+Supercenter+near+Myrtle+Beach+SC" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="name">CVS Pharmacy</span>
+                            <span class="distance">0.8 miles</span>
+                            <a href="https://www.google.com/maps/search/CVS+Pharmacy+near+400+N+Ocean+Blvd+Myrtle+Beach+SC" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="name">Walgreens</span>
+                            <span class="distance">1.2 miles</span>
+                            <a href="https://www.google.com/maps/search/Walgreens+near+400+N+Ocean+Blvd+Myrtle+Beach+SC" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nearby-category">
+                    <h3>Restaurants</h3>
+                    <ul class="nearby-list">
+                        <li>
+                            <span class="name">Peaches Corner</span>
+                            <span class="distance">Boardwalk</span>
+                            <a href="https://www.google.com/maps/search/Peaches+Corner+Myrtle+Beach+Boardwalk" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="name">Sea Captain's House</span>
+                            <span class="distance">0.3 miles</span>
+                            <a href="https://www.google.com/maps/search/Sea+Captains+House+Myrtle+Beach+SC" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="name">Pier 14 Restaurant</span>
+                            <span class="distance">Boardwalk</span>
+                            <a href="https://www.google.com/maps/search/Pier+14+Restaurant+Myrtle+Beach+SC" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="name">Landry's Seafood</span>
+                            <span class="distance">Broadway at the Beach</span>
+                            <a href="https://www.google.com/maps/search/Landrys+Seafood+Broadway+at+the+Beach+Myrtle+Beach" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nearby-category">
+                    <h3>Shopping</h3>
+                    <ul class="nearby-list">
+                        <li>
+                            <span class="name">Coastal Grand Mall</span>
+                            <span class="distance">4.5 miles</span>
+                            <a href="https://www.google.com/maps/search/Coastal+Grand+Mall+Myrtle+Beach+SC" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="name">Tanger Outlets</span>
+                            <span class="distance">8 miles</span>
+                            <a href="https://www.google.com/maps/search/Tanger+Outlets+Myrtle+Beach+SC" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="name">Broadway at the Beach</span>
+                            <span class="distance">2 miles</span>
+                            <a href="https://www.google.com/maps/search/Broadway+at+the+Beach+Myrtle+Beach+SC" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="name">Gay Dolphin Gift Shop</span>
+                            <span class="distance">Boardwalk</span>
+                            <a href="https://www.google.com/maps/search/Gay+Dolphin+Gift+Shop+Myrtle+Beach+SC" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="nearby-category">
+                    <h3>Quick Bites</h3>
+                    <ul class="nearby-list">
+                        <li>
+                            <span class="name">Starbucks</span>
+                            <span class="distance">0.6 miles</span>
+                            <a href="https://www.google.com/maps/search/Starbucks+near+400+N+Ocean+Blvd+Myrtle+Beach+SC" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="name">Dunkin'</span>
+                            <span class="distance">0.4 miles</span>
+                            <a href="https://www.google.com/maps/search/Dunkin+near+400+N+Ocean+Blvd+Myrtle+Beach+SC" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="name">McDonald's</span>
+                            <span class="distance">0.7 miles</span>
+                            <a href="https://www.google.com/maps/search/McDonalds+near+400+N+Ocean+Blvd+Myrtle+Beach+SC" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                        <li>
+                            <span class="name">Chick-fil-A</span>
+                            <span class="distance">2.1 miles</span>
+                            <a href="https://www.google.com/maps/search/Chick-fil-A+near+Myrtle+Beach+SC" target="_blank" class="map-btn" title="View on Map">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Offers Section -->
+    <section id="special-offers" class="section offers-section">
+        <div class="container">
+            <div class="offer-banner">
+                <div class="offer-content">
+                    <h2>Special Offers</h2>
+                    <p>Check out our latest deals and packages for your Myrtle Beach getaway</p>
+                    <a href="https://www.holidaysandsnorth.com/specials" target="_blank" class="btn btn-primary">View Current Specials</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policies Section -->
+    <section id="policies" class="section policies-section">
+        <div class="container">
+            <h2 class="section-title">Resort Policies</h2>
+            <p class="section-subtitle">Please review our policies to ensure a pleasant stay for all guests</p>
+
+            <div class="policies-grid">
+                <div class="policy-card">
+                    <h3>General Policies</h3>
+                    <ul>
+                        <li><strong>Age Requirement:</strong> Primary guests must be 23 years of age or older unless accompanied by a parent or legal guardian.</li>
+                        <li><strong>Check-Out Time:</strong> All guests must vacate their rooms no later than 11:00 AM on the day of departure.</li>
+                        <li><strong>Pet Policy:</strong> We are a pet-free property. No animals are permitted on the premises.</li>
+                        <li><strong>Occupancy:</strong> Room occupancy is limited to the number of registered guests. Unregistered guests are not permitted in guest rooms after 11:00 PM.</li>
+                        <li><strong>Right to Refuse Service:</strong> As a privately owned and operated establishment, we reserve the right to refuse service at our discretion.</li>
+                    </ul>
+                </div>
+                <div class="policy-card">
+                    <h3>Smoke-Free Policy</h3>
+                    <ul>
+                        <li>Holiday Sands North is a <strong>100% smoke-free property</strong>.</li>
+                        <li>Smoking and vaping are prohibited throughout the entire property, including all guest rooms, common areas, and balconies.</li>
+                        <li><strong>First Violation:</strong> $250 cleaning fee will be charged to your account.</li>
+                        <li><strong>Second Violation:</strong> Immediate eviction from the property with no refund.</li>
+                    </ul>
+                </div>
+                <div class="policy-card">
+                    <h3>Noise & Conduct</h3>
+                    <ul>
+                        <li>Loud or excessive noise is prohibited on resort property at all times.</li>
+                        <li>Guests are expected to conduct themselves in a manner respectful to other guests and staff.</li>
+                        <li>Violation of conduct policies may result in a <strong>$250 policy violation fee</strong> and/or removal from the property.</li>
+                    </ul>
+                </div>
+                <div class="policy-card">
+                    <h3>Housekeeping Services</h3>
+                    <ul>
+                        <li>Housekeeping services are available <strong>by request only</strong> between 9:00 AM and 3:00 PM.</li>
+                        <li>Staff will not enter your room without your explicit request.</li>
+                        <li>Fresh linens are delivered daily to each room.</li>
+                    </ul>
+                </div>
+                <div class="policy-card">
+                    <h3>Refund Policy</h3>
+                    <ul>
+                        <li>No refunds will be issued for inclement weather conditions.</li>
+                        <li>No refunds will be issued for early departures.</li>
+                        <li>Please review cancellation terms at the time of booking.</li>
+                    </ul>
+                </div>
+                <div class="policy-card">
+                    <h3>Security & Liability</h3>
+                    <ul>
+                        <li>In-room safes are provided for your convenience.</li>
+                        <li>Pursuant to innkeeper's law, the resort cannot be held responsible for loss or theft of personal belongings.</li>
+                        <li>Please secure your vehicles and do not leave valuables visible. The resort is not responsible for vehicle theft or damage.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-subtitle">We're here to help make your stay perfect</p>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>Address</h3>
+                        <p>
+                            Holiday Sands North<br>
+                            400 North Ocean Boulevard<br>
+                            Myrtle Beach, SC 29577
+                        </p>
+                        <p class="address-note">
+                            <strong>Note:</strong> Please ensure you have the correct destination. Maritime Beach Club shares a similar address with a different zip code. Look for Holiday Sands North at zip code <strong>29577</strong>.
+                        </p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Phone</h3>
+                        <p>
+                            Toll-Free: <a href="tel:1-800-448-1091">1-800-448-1091</a>
+                        </p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Email</h3>
+                        <p>
+                            <a href="mailto:res-info@holidaysandsnorth.com">res-info@holidaysandsnorth.com</a>
+                        </p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>Follow Us</h3>
+                        <div class="social-links-large">
+                            <a href="https://www.facebook.com/HolidaySandsNorth" target="_blank" rel="noopener">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                                Facebook
+                            </a>
+                            <a href="https://twitter.com/HolidaySandsN" target="_blank" rel="noopener">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                                Twitter / X
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.5!2d-78.8867!3d33.6934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89006f5c8b5f5555%3A0x5555555555555555!2s400%20N%20Ocean%20Blvd%2C%20Myrtle%20Beach%2C%20SC%2029577!5e0!3m2!1sen!2sus!4v1234567890"
+                        width="100%"
+                        height="400"
+                        style="border:0;"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Holiday Sands North Location">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>Holiday Sands North</h3>
+                    <p>A family-operated oceanfront hotel providing memorable beach vacations since 1985. Located on the beautiful Myrtle Beach Boardwalk.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#rooms">Rooms</a></li>
+                        <li><a href="#amenities">Amenities</a></li>
+                        <li><a href="#dining">Dining</a></li>
+                        <li><a href="#policies">Policies</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Reservations</h4>
+                    <ul>
+                        <li><a href="https://reservations.guestdesk.com/sites/HolidaySandsNorth" target="_blank">Book Online</a></li>
+                        <li><a href="tel:1-800-448-1091">1-800-448-1091</a></li>
+                        <li><a href="https://www.holidaysandsnorth.com/specials" target="_blank">Special Offers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p>400 N Ocean Blvd<br>Myrtle Beach, SC 29577</p>
+                    <p><a href="mailto:res-info@holidaysandsnorth.com">res-info@holidaysandsnorth.com</a></p>
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/HolidaySandsNorth" target="_blank" rel="noopener" aria-label="Facebook">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        </a>
+                        <a href="https://twitter.com/HolidaySandsN" target="_blank" rel="noopener" aria-label="Twitter">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Holiday Sands North. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
