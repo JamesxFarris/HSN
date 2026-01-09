@@ -151,7 +151,6 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     left: 0;
     right: 0;
     z-index: 1000;
-    background: var(--bg);
     box-shadow: var(--shadow);
 }
 
@@ -160,6 +159,7 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     color: var(--text-white);
     padding: 8px 0;
     font-size: 0.875rem;
+    transition: all 0.3s ease;
 }
 
 .header-top .container {
@@ -204,17 +204,21 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
 
 .main-nav {
     padding: 16px 0;
+    transition: all 0.3s ease;
+    background: var(--bg);
 }
 
 .main-nav .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 .logo {
     display: flex;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
 .logo-img {
@@ -224,6 +228,28 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     background: rgba(255, 255, 255, 0.9);
     padding: 8px;
     border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* Scrolled state - blue bar collapses, white takes over */
+.header.scrolled .header-top {
+    padding: 0;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.header.scrolled .main-nav {
+    background: var(--bg);
+}
+
+.header.scrolled .logo-img {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+    background: transparent;
+}
+
+.header.scrolled .nav-toggle span {
+    background: var(--primary-dark);
 }
 
 .nav-toggle {
@@ -1258,14 +1284,12 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     }
 
     .main-nav .container {
-        justify-content: center;
+        justify-content: space-between;
         position: relative;
     }
 
     .nav-toggle {
         display: flex;
-        position: absolute;
-        right: 20px;
     }
 
     .nav-menu {
