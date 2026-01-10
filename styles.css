@@ -293,6 +293,11 @@ h3, h4, h5, h6 {
     display: none;
 }
 
+/* Nav menu title - hidden on desktop */
+.nav-menu-title {
+    display: none;
+}
+
 .nav-menu {
     display: flex;
     align-items: center;
@@ -481,6 +486,21 @@ h3, h4, h5, h6 {
 .form-group input[type="date"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
     opacity: 0.6;
+}
+
+/* Fix date input centering on mobile - hide default icon and use symmetric padding */
+@media (max-width: 768px) {
+    .form-group input[type="date"]::-webkit-calendar-picker-indicator {
+        opacity: 0;
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    .form-group input[type="date"]::-webkit-date-and-time-value {
+        text-align: center;
+    }
 }
 
 .form-group input:focus,
@@ -1834,63 +1854,94 @@ a.event-card:hover {
 
     .nav-menu {
         display: flex;
-        position: absolute;
-        top: 100%;
+        position: fixed;
+        top: 0;
         left: 0;
         right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
         background: var(--bg);
         flex-direction: column;
-        padding: 12px 20px 24px;
-        gap: 16px;
-        box-shadow: var(--shadow-lg);
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        z-index: 99;
         /* Animation setup */
         opacity: 0;
         visibility: hidden;
-        transform: translateY(-10px);
-        transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+        transition: opacity 0.3s ease, visibility 0.3s;
     }
 
     .nav-menu.active {
         display: flex;
         opacity: 1;
         visibility: visible;
-        transform: translateY(0);
     }
 
     .nav-menu li {
         opacity: 0;
-        transform: translateX(-20px);
+        transform: translateY(20px);
         transition: opacity 0.3s ease, transform 0.3s ease;
+        text-align: center;
+    }
+
+    /* Title is always visible (no animation) */
+    .nav-menu li.nav-menu-title {
+        opacity: 1;
+        transform: none;
     }
 
     .nav-menu.active li {
         opacity: 1;
-        transform: translateX(0);
+        transform: translateY(0);
     }
 
-    /* Staggered animation for menu items */
-    .nav-menu.active li:nth-child(1) { transition-delay: 0.05s; }
-    .nav-menu.active li:nth-child(2) { transition-delay: 0.1s; }
-    .nav-menu.active li:nth-child(3) { transition-delay: 0.15s; }
-    .nav-menu.active li:nth-child(4) { transition-delay: 0.2s; }
-    .nav-menu.active li:nth-child(5) { transition-delay: 0.25s; }
-    .nav-menu.active li:nth-child(6) { transition-delay: 0.3s; }
-    .nav-menu.active li:nth-child(7) { transition-delay: 0.35s; }
-    .nav-menu.active li:nth-child(8) { transition-delay: 0.4s; }
+    /* Staggered animation for menu items (skip title which is :nth-child(1)) */
+    .nav-menu.active li:nth-child(2) { transition-delay: 0.05s; }
+    .nav-menu.active li:nth-child(3) { transition-delay: 0.1s; }
+    .nav-menu.active li:nth-child(4) { transition-delay: 0.15s; }
+    .nav-menu.active li:nth-child(5) { transition-delay: 0.2s; }
+    .nav-menu.active li:nth-child(6) { transition-delay: 0.25s; }
+    .nav-menu.active li:nth-child(7) { transition-delay: 0.3s; }
+    .nav-menu.active li:nth-child(8) { transition-delay: 0.35s; }
+    .nav-menu.active li:nth-child(9) { transition-delay: 0.4s; }
 
     .nav-menu a {
-        font-size: 1.1rem;
+        font-size: 1.5rem;
         font-weight: 500;
         color: var(--primary-dark);
-        padding: 8px 0;
+        padding: 12px 0;
+        display: block;
+    }
+
+    .nav-menu a:not(.nav-btn)::after {
+        display: none;
     }
 
     .nav-menu .nav-btn {
         color: var(--text-white) !important;
         text-align: center;
-        padding: 14px 20px;
-        font-size: 1.1rem;
-        margin-top: 8px;
+        padding: 16px 60px;
+        font-size: 1.25rem;
+        margin-top: 16px;
+        min-width: 220px;
+    }
+
+    /* Mobile menu title */
+    .nav-menu-title {
+        display: block;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-family: 'Playfair Display', Georgia, serif;
+        font-size: 1.75rem;
+        font-weight: 600;
+        color: var(--primary-dark);
+        letter-spacing: 1px;
     }
 
     /* Mobile gallery button */

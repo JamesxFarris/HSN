@@ -356,26 +356,34 @@ function initNavigation() {
     const navMenu = document.querySelector('.nav-menu');
 
     if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
-            navMenu.classList.toggle('active');
+        function toggleMenu() {
+            const isActive = navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
-        });
+            // Prevent body scroll when fullscreen menu is open
+            document.body.style.overflow = isActive ? 'hidden' : '';
+        }
+
+        function closeMenu() {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        navToggle.addEventListener('click', toggleMenu);
 
         // Close menu when clicking a link
         navMenu.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function() {
                 if (window.innerWidth <= 768) {
-                    navMenu.classList.remove('active');
-                    navToggle.classList.remove('active');
+                    closeMenu();
                 }
             });
         });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!navToggle.contains(e.target) && !navMenu.contains(e.target)) {
-                navMenu.classList.remove('active');
-                navToggle.classList.remove('active');
+        // Close menu when clicking outside (on the menu background)
+        navMenu.addEventListener('click', function(e) {
+            if (e.target === navMenu) {
+                closeMenu();
             }
         });
     }
@@ -479,6 +487,10 @@ function initRoomToggle() {
     const streetRooms = document.getElementById('street-rooms');
     const oceanfrontViewMore = document.getElementById('oceanfront-view-more');
     const oceanfrontMoreRooms = document.getElementById('oceanfront-more-rooms');
+    const streetViewMore = document.getElementById('street-view-more');
+
+    // Hide street view more button by default (oceanfront is default view)
+    if (streetViewMore) streetViewMore.style.display = 'none';
 
     if (toggleBtns.length && oceanfrontRooms && streetRooms) {
         toggleBtns.forEach(btn => {
@@ -493,14 +505,16 @@ function initRoomToggle() {
                 if (view === 'oceanfront') {
                     oceanfrontRooms.classList.add('active');
                     streetRooms.classList.remove('active');
-                    // Show View More button for oceanfront
+                    // Show oceanfront View More, hide street View More
                     if (oceanfrontViewMore) oceanfrontViewMore.style.display = 'block';
+                    if (streetViewMore) streetViewMore.style.display = 'none';
                 } else {
                     oceanfrontRooms.classList.remove('active');
                     streetRooms.classList.add('active');
-                    // Hide View More button and extra rooms for street view
+                    // Hide oceanfront View More and extra rooms, show street View More
                     if (oceanfrontViewMore) oceanfrontViewMore.style.display = 'none';
                     if (oceanfrontMoreRooms) oceanfrontMoreRooms.classList.remove('show');
+                    if (streetViewMore) streetViewMore.style.display = 'block';
                 }
             });
         });
