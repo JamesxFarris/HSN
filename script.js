@@ -509,22 +509,39 @@ function initRoomToggle() {
 
 // ===== Responsive Room Display =====
 function initResponsiveRooms() {
-    const oceanfrontRooms = document.getElementById('oceanfront-rooms');
-    const oceanfrontMoreRooms = document.getElementById('oceanfront-more-rooms');
-    const viewMoreBtn = document.querySelector('.view-more-btn[data-target="oceanfront-more-rooms"]');
+    // Setup for Oceanfront rooms
+    setupRoomSection({
+        roomsId: 'oceanfront-rooms',
+        moreRoomsId: 'oceanfront-more-rooms',
+        buttonSelector: '.view-more-btn[data-target="oceanfront-more-rooms"]',
+        label: 'Oceanfront'
+    });
 
-    if (!oceanfrontRooms || !viewMoreBtn) return;
+    // Setup for Street View rooms
+    setupRoomSection({
+        roomsId: 'street-rooms',
+        moreRoomsId: null,
+        buttonSelector: '.view-more-btn[data-target="street-rooms"]',
+        label: 'Street'
+    });
+}
 
-    // Get all room cards from both sections
-    const initialRoomCards = oceanfrontRooms.querySelectorAll('.room-card');
-    const moreRoomCards = oceanfrontMoreRooms ? oceanfrontMoreRooms.querySelectorAll('.room-card') : [];
+function setupRoomSection(config) {
+    const roomsContainer = document.getElementById(config.roomsId);
+    const moreRoomsContainer = config.moreRoomsId ? document.getElementById(config.moreRoomsId) : null;
+    const viewMoreBtn = document.querySelector(config.buttonSelector);
+
+    if (!roomsContainer || !viewMoreBtn) return;
+
+    const roomCards = roomsContainer.querySelectorAll('.room-card');
+    const moreRoomCards = moreRoomsContainer ? moreRoomsContainer.querySelectorAll('.room-card') : [];
 
     let initialCount = window.innerWidth > 768 ? 6 : 4;
     let showingAll = false;
 
-    function updateRoomVisibility() {
-        // Show/hide initial room cards based on count
-        initialRoomCards.forEach((card, index) => {
+    function updateVisibility() {
+        // Show/hide room cards based on count
+        roomCards.forEach((card, index) => {
             if (index < initialCount || showingAll) {
                 card.style.display = 'block';
             } else {
@@ -532,23 +549,23 @@ function initResponsiveRooms() {
             }
         });
 
-        // Show/hide more rooms section
-        if (oceanfrontMoreRooms) {
+        // Show/hide more rooms section if exists
+        if (moreRoomsContainer) {
             if (showingAll) {
-                oceanfrontMoreRooms.classList.add('show');
+                moreRoomsContainer.classList.add('show');
             } else {
-                oceanfrontMoreRooms.classList.remove('show');
+                moreRoomsContainer.classList.remove('show');
             }
         }
 
         // Update button text
-        const hiddenInitial = Math.max(0, initialRoomCards.length - initialCount);
+        const hiddenInitial = Math.max(0, roomCards.length - initialCount);
         const totalHidden = showingAll ? 0 : hiddenInitial + moreRoomCards.length;
 
         if (showingAll) {
             viewMoreBtn.innerHTML = 'Show Less';
         } else if (totalHidden > 0) {
-            viewMoreBtn.innerHTML = `View More Oceanfront Rooms<br><span class="btn-subtext">(${totalHidden} more)</span>`;
+            viewMoreBtn.innerHTML = `View More ${config.label} Rooms<br><span class="btn-subtext">(${totalHidden} more)</span>`;
         }
 
         // Show/hide button
@@ -560,7 +577,7 @@ function initResponsiveRooms() {
     }
 
     // Initial render
-    updateRoomVisibility();
+    updateVisibility();
 
     // Handle resize
     window.addEventListener('resize', function() {
@@ -568,7 +585,7 @@ function initResponsiveRooms() {
         if (newInitial !== initialCount) {
             initialCount = newInitial;
             if (!showingAll) {
-                updateRoomVisibility();
+                updateVisibility();
             }
         }
     });
@@ -576,12 +593,11 @@ function initResponsiveRooms() {
     // View more button click
     viewMoreBtn.addEventListener('click', function() {
         showingAll = !showingAll;
-        updateRoomVisibility();
+        updateVisibility();
 
-        if (showingAll && oceanfrontMoreRooms) {
-            // Scroll to show more rooms
+        if (showingAll) {
             setTimeout(() => {
-                const firstHiddenCard = initialRoomCards[initialCount] || oceanfrontMoreRooms.querySelector('.room-card');
+                const firstHiddenCard = roomCards[initialCount] || (moreRoomsContainer ? moreRoomsContainer.querySelector('.room-card') : null);
                 if (firstHiddenCard) {
                     firstHiddenCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
