@@ -701,6 +701,33 @@ h3, h4, h5, h6 {
     font-size: 0.9rem;
 }
 
+.amenity-hours {
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    margin: 48px 0 32px 0;
+    padding: 24px;
+    background: var(--bg-light);
+    border-radius: var(--radius-md);
+}
+
+.hours-item {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+}
+
+.hours-item strong {
+    color: var(--primary);
+}
+
+@media (max-width: 768px) {
+    .amenity-hours {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+}
+
 .building-info {
     background: var(--primary-dark);
     color: var(--text-white);
