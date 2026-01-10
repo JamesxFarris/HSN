@@ -1071,6 +1071,18 @@ a.event-card:hover {
     animation-play-state: paused;
 }
 
+.gallery-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 51, 102, 0.4);
+    pointer-events: none;
+    z-index: 5;
+}
+
 .gallery-mobile-btn {
     display: none;
 }
