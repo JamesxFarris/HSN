@@ -92,17 +92,13 @@ h3 { font-size: clamp(1.25rem, 3vw, 1.5rem); }
     color: var(--text-light);
     margin-bottom: 3rem;
     font-size: 1.1rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
 }
 
-/* Highlight/Script Font - Beachy yet classy */
-.font-highlight {
-    font-family: 'Satisfy', cursive;
-}
-
-.text-highlight {
-    font-family: 'Satisfy', cursive;
-    font-size: 1.2em;
-    color: var(--primary-light);
+/* Smaller headings use sans-serif for contrast */
+h3, h4, h5, h6 {
+    font-family: 'Inter', sans-serif;
 }
 
 /* ===== Buttons ===== */
