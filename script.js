@@ -402,7 +402,7 @@ function initReservationForm() {
             const checkout = document.getElementById('checkout').value;
             const adults = document.getElementById('adults').value;
             const children = document.getElementById('children').value;
-            const rooms = document.getElementById('rooms').value;
+            const rooms = 1; // Default to 1 room
 
             // Validate dates
             if (!checkin || !checkout) {
