@@ -823,3 +823,101 @@ function initAttractionSlideshows() {
         });
     }
 })();
+
+// ===== Room Image Lightbox =====
+(function() {
+    const lightbox = document.getElementById('room-lightbox');
+    if (!lightbox) return;
+
+    const lightboxImg = document.getElementById('room-lightbox-img');
+    const lightboxCaption = document.getElementById('room-lightbox-caption');
+    const lightboxClose = lightbox.querySelector('.lightbox-close');
+    const lightboxPrev = lightbox.querySelector('.lightbox-prev');
+    const lightboxNext = lightbox.querySelector('.lightbox-next');
+
+    const roomImages = document.querySelectorAll('.room-image');
+    let currentIndex = 0;
+    let visibleImages = [];
+
+    function updateVisibleImages() {
+        // Get all room images from visible room cards
+        visibleImages = Array.from(roomImages).filter(roomImage => {
+            const card = roomImage.closest('.room-card');
+            return card && card.style.display !== 'none';
+        });
+    }
+
+    function openLightbox(index) {
+        updateVisibleImages();
+        currentIndex = index;
+        const roomImage = visibleImages[currentIndex];
+        const img = roomImage.querySelector('img');
+        const caption = roomImage.closest('.room-card').querySelector('h3');
+
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxCaption.textContent = caption ? caption.textContent : '';
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function showPrev() {
+        updateVisibleImages();
+        currentIndex = (currentIndex - 1 + visibleImages.length) % visibleImages.length;
+        const roomImage = visibleImages[currentIndex];
+        const img = roomImage.querySelector('img');
+        const caption = roomImage.closest('.room-card').querySelector('h3');
+        lightboxImg.src = img.src;
+        lightboxCaption.textContent = caption ? caption.textContent : '';
+    }
+
+    function showNext() {
+        updateVisibleImages();
+        currentIndex = (currentIndex + 1) % visibleImages.length;
+        const roomImage = visibleImages[currentIndex];
+        const img = roomImage.querySelector('img');
+        const caption = roomImage.closest('.room-card').querySelector('h3');
+        lightboxImg.src = img.src;
+        lightboxCaption.textContent = caption ? caption.textContent : '';
+    }
+
+    // Add click handlers to room images
+    roomImages.forEach(roomImage => {
+        roomImage.style.cursor = 'pointer';
+        roomImage.addEventListener('click', function(e) {
+            // Don't open lightbox if clicking on the badge
+            if (e.target.classList.contains('room-badge')) return;
+
+            updateVisibleImages();
+            const visibleIndex = visibleImages.indexOf(roomImage);
+            if (visibleIndex !== -1) {
+                openLightbox(visibleIndex);
+            }
+        });
+    });
+
+    // Lightbox controls
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxPrev.addEventListener('click', showPrev);
+    lightboxNext.addEventListener('click', showNext);
+
+    // Close on background click
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) {
+            closeLightbox();
+        }
+    });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') showPrev();
+        if (e.key === 'ArrowRight') showNext();
+    });
+})();
