@@ -481,6 +481,9 @@ function setMinDates() {
 }
 
 // ===== Room View Toggle =====
+// Store reset functions for room sections
+const roomSectionResets = {};
+
 function initRoomToggle() {
     const toggleBtns = document.querySelectorAll('.toggle-btn');
     const oceanfrontRooms = document.getElementById('oceanfront-rooms');
@@ -511,9 +514,13 @@ function initRoomToggle() {
                 } else {
                     oceanfrontRooms.classList.remove('active');
                     streetRooms.classList.add('active');
-                    // Hide oceanfront View More and extra rooms, show street View More
-                    if (oceanfrontViewMore) oceanfrontViewMore.style.display = 'none';
+                    // Reset oceanfront to collapsed state
                     if (oceanfrontMoreRooms) oceanfrontMoreRooms.classList.remove('show');
+                    if (roomSectionResets['oceanfront-rooms']) {
+                        roomSectionResets['oceanfront-rooms']();
+                    }
+                    // Hide oceanfront View More, show street View More
+                    if (oceanfrontViewMore) oceanfrontViewMore.style.display = 'none';
                     if (streetViewMore) streetViewMore.style.display = 'block';
                 }
             });
@@ -552,6 +559,12 @@ function setupRoomSection(config) {
 
     let initialCount = window.innerWidth > 768 ? 6 : 4;
     let showingAll = false;
+
+    // Register reset function
+    roomSectionResets[config.roomsId] = function() {
+        showingAll = false;
+        updateVisibility();
+    };
 
     function updateVisibility() {
         // Show/hide room cards based on count
