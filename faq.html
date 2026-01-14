@@ -381,38 +381,57 @@
             });
         }
 
-        // FAQ Accordion
+        // FAQ Accordion - allows multiple items open at once
         const faqItems = document.querySelectorAll('.faq-item');
 
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
             question.addEventListener('click', () => {
-                const isOpen = item.classList.contains('active');
-
-                // Close all items
-                faqItems.forEach(i => i.classList.remove('active'));
-
-                // Open clicked item if it wasn't already open
-                if (!isOpen) {
-                    item.classList.add('active');
-                }
+                // Toggle clicked item (allows multiple open)
+                item.classList.toggle('active');
             });
         });
 
-        // FAQ Search
+        // FAQ Search with wildcard/fuzzy matching
         const searchInput = document.getElementById('faq-search-input');
         const faqCategories = document.querySelectorAll('.faq-category');
         const noResults = document.getElementById('faq-no-results');
 
+        // Normalize text for fuzzy matching (handles checkin/check-in, checkout/check-out, etc.)
+        function normalizeText(text) {
+            return text
+                .toLowerCase()
+                .replace(/[-\s]/g, '')  // Remove hyphens and spaces
+                .replace(/&/g, 'and');  // Replace & with and
+        }
+
+        // Check if search term matches text (with fuzzy matching)
+        function fuzzyMatch(text, searchTerm) {
+            const normalizedText = normalizeText(text);
+            const normalizedSearch = normalizeText(searchTerm);
+
+            // Direct match after normalization
+            if (normalizedText.includes(normalizedSearch)) {
+                return true;
+            }
+
+            // Original lowercase match (for exact phrases)
+            if (text.toLowerCase().includes(searchTerm.toLowerCase())) {
+                return true;
+            }
+
+            return false;
+        }
+
         searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase().trim();
+            const searchTerm = this.value.trim();
             let hasResults = false;
 
             faqItems.forEach(item => {
-                const question = item.querySelector('.faq-question span').textContent.toLowerCase();
-                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                const question = item.querySelector('.faq-question span').textContent;
+                const answer = item.querySelector('.faq-answer').textContent;
 
-                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                if (fuzzyMatch(question, searchTerm) || fuzzyMatch(answer, searchTerm)) {
                     item.style.display = 'block';
                     hasResults = true;
                 } else {
