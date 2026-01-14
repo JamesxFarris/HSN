@@ -614,6 +614,7 @@ h3, h4, h5, h6 {
 
 .rooms-grid.active {
     display: grid;
+    grid-auto-rows: 1fr;
 }
 
 .room-card {
@@ -622,6 +623,8 @@ h3, h4, h5, h6 {
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
+    display: flex;
+    flex-direction: column;
 }
 
 .room-card:hover {
@@ -660,6 +663,14 @@ h3, h4, h5, h6 {
 
 .room-info {
     padding: 24px;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+}
+
+.room-info > .btn {
+    white-space: nowrap;
+    margin-top: auto;
 }
 
 .room-info h3 {
@@ -676,6 +687,7 @@ h3, h4, h5, h6 {
     margin-bottom: 0.75rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    align-self: flex-start;
 }
 
 .tower-tag.north {
@@ -699,6 +711,7 @@ h3, h4, h5, h6 {
     margin-bottom: 6px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    align-self: flex-start;
 }
 
 .room-info > p {
@@ -1781,6 +1794,30 @@ a.event-card:hover {
     transform: translateY(-50%);
 }
 
+/* Lightbox Gallery Button - Desktop Only */
+.lightbox-gallery-btn {
+    display: none;
+}
+
+@media (min-width: 769px) {
+    .lightbox-gallery-btn {
+        display: inline-block;
+        margin-top: 1.5rem;
+        padding: 0.75rem 1.5rem;
+        background: var(--accent);
+        color: var(--text-dark);
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 4px;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .lightbox-gallery-btn:hover {
+        background: var(--accent-dark);
+        transform: scale(1.05);
+    }
+}
+
 .gallery-cta {
     padding: 80px 20px;
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
@@ -2515,9 +2552,3 @@ a.event-card:hover {
     height: 24px;
 }
 
-/* Hide scroll to top on desktop */
-@media (min-width: 1024px) {
-    .scroll-to-top {
-        display: none;
-    }
-}
