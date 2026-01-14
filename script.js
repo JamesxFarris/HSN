@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setMinDates();
     initAttractionSlideshows();
     initUpcomingEvents();
+    initRoomCarousels();
 });
 
 // ===== Upcoming Local Events =====
@@ -934,3 +935,77 @@ function initAttractionSlideshows() {
         if (e.key === 'ArrowRight') showNext();
     });
 })();
+
+// ===== Room Image Carousels =====
+function initRoomCarousels() {
+    const carousels = document.querySelectorAll('.room-carousel');
+
+    carousels.forEach(carousel => {
+        const slides = carousel.querySelectorAll('.carousel-slide');
+        const prevBtn = carousel.querySelector('.carousel-prev');
+        const nextBtn = carousel.querySelector('.carousel-next');
+        const counter = carousel.querySelector('.carousel-counter');
+        const currentSpan = counter ? counter.querySelector('.current') : null;
+
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+
+        function updateCarousel() {
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('active', index === currentIndex);
+            });
+            if (currentSpan) {
+                currentSpan.textContent = currentIndex + 1;
+            }
+        }
+
+        function goToNext(e) {
+            e.stopPropagation();
+            currentIndex = (currentIndex + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToPrev(e) {
+            e.stopPropagation();
+            currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        if (prevBtn) {
+            prevBtn.addEventListener('click', goToPrev);
+        }
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', goToNext);
+        }
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        carousel.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+
+        carousel.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const diff = touchStartX - touchEndX;
+
+            if (Math.abs(diff) > swipeThreshold) {
+                if (diff > 0) {
+                    // Swiped left - go next
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                } else {
+                    // Swiped right - go prev
+                    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                }
+                updateCarousel();
+            }
+        }
+    });
+}
