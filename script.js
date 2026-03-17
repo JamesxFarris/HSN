@@ -420,9 +420,10 @@ function initReservationForm() {
             }
 
             // Format dates for Guest Desk (M/DD/YYYY)
+            // Split the ISO string directly to avoid UTC-to-local timezone shift
             const formatDate = (date) => {
-                const d = new Date(date);
-                return `${d.getMonth() + 1}/${d.getDate()}/${d.getFullYear()}`;
+                const [year, month, day] = date.split('-');
+                return `${parseInt(month)}/${parseInt(day)}/${year}`;
             };
 
             const checkinFormatted = formatDate(checkin);
