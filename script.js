@@ -850,28 +850,15 @@ function initAttractionSlideshows() {
     const lightboxPrev = lightbox.querySelector('.lightbox-prev');
     const lightboxNext = lightbox.querySelector('.lightbox-next');
 
-    const roomImages = document.querySelectorAll('.room-image');
+    let currentSlides = [];
     let currentIndex = 0;
-    let visibleImages = [];
 
-    function updateVisibleImages() {
-        // Get all room images from visible room cards
-        visibleImages = Array.from(roomImages).filter(roomImage => {
-            const card = roomImage.closest('.room-card');
-            return card && card.style.display !== 'none';
-        });
-    }
-
-    function openLightbox(index) {
-        updateVisibleImages();
-        currentIndex = index;
-        const roomImage = visibleImages[currentIndex];
-        const img = roomImage.querySelector('img');
-        const caption = roomImage.closest('.room-card').querySelector('h3');
-
-        lightboxImg.src = img.src;
-        lightboxImg.alt = img.alt;
-        lightboxCaption.textContent = caption ? caption.textContent : '';
+    function openLightbox(slides, startIndex, caption) {
+        currentSlides = slides;
+        currentIndex = startIndex;
+        lightboxImg.src = currentSlides[currentIndex].src;
+        lightboxImg.alt = currentSlides[currentIndex].alt;
+        lightboxCaption.textContent = caption;
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
@@ -882,37 +869,37 @@ function initAttractionSlideshows() {
     }
 
     function showPrev() {
-        updateVisibleImages();
-        currentIndex = (currentIndex - 1 + visibleImages.length) % visibleImages.length;
-        const roomImage = visibleImages[currentIndex];
-        const img = roomImage.querySelector('img');
-        const caption = roomImage.closest('.room-card').querySelector('h3');
-        lightboxImg.src = img.src;
-        lightboxCaption.textContent = caption ? caption.textContent : '';
+        currentIndex = (currentIndex - 1 + currentSlides.length) % currentSlides.length;
+        lightboxImg.src = currentSlides[currentIndex].src;
+        lightboxImg.alt = currentSlides[currentIndex].alt;
     }
 
     function showNext() {
-        updateVisibleImages();
-        currentIndex = (currentIndex + 1) % visibleImages.length;
-        const roomImage = visibleImages[currentIndex];
-        const img = roomImage.querySelector('img');
-        const caption = roomImage.closest('.room-card').querySelector('h3');
-        lightboxImg.src = img.src;
-        lightboxCaption.textContent = caption ? caption.textContent : '';
+        currentIndex = (currentIndex + 1) % currentSlides.length;
+        lightboxImg.src = currentSlides[currentIndex].src;
+        lightboxImg.alt = currentSlides[currentIndex].alt;
     }
 
     // Add click handlers to room images
+    const roomImages = document.querySelectorAll('.room-image');
     roomImages.forEach(roomImage => {
         roomImage.style.cursor = 'pointer';
         roomImage.addEventListener('click', function(e) {
-            // Don't open lightbox if clicking on the badge
             if (e.target.classList.contains('room-badge')) return;
+            if (e.target.closest('.carousel-btn')) return;
 
-            updateVisibleImages();
-            const visibleIndex = visibleImages.indexOf(roomImage);
-            if (visibleIndex !== -1) {
-                openLightbox(visibleIndex);
-            }
+            const card = roomImage.closest('.room-card');
+            if (!card) return;
+
+            const slides = Array.from(roomImage.querySelectorAll('.carousel-slide'));
+            if (slides.length === 0) return;
+
+            // Open at whichever slide is currently active in the carousel
+            const activeSlide = roomImage.querySelector('.carousel-slide.active');
+            const startIndex = activeSlide ? slides.indexOf(activeSlide) : 0;
+
+            const caption = card.querySelector('h3');
+            openLightbox(slides, startIndex, caption ? caption.textContent : '');
         });
     });
 
@@ -923,9 +910,7 @@ function initAttractionSlideshows() {
 
     // Close on background click
     lightbox.addEventListener('click', function(e) {
-        if (e.target === lightbox) {
-            closeLightbox();
-        }
+        if (e.target === lightbox) closeLightbox();
     });
 
     // Keyboard navigation
