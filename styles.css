@@ -1602,18 +1602,6 @@ a.event-card:hover {
     font-size: 0.875rem;
 }
 
-.site-credit {
-    margin-top: 8px;
-    font-size: 0.8rem !important;
-    color: rgba(255, 255, 255, 0.35) !important;
-    letter-spacing: 0.5px;
-}
-
-.site-credit span {
-    color: rgba(255, 255, 255, 0.5);
-    font-weight: 500;
-}
-
 /* ===== Gallery Page ===== */
 .gallery-hero {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
