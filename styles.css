@@ -1602,6 +1602,12 @@ a.event-card:hover {
     font-size: 0.875rem;
 }
 
+.footer-ai-note {
+    margin-top: 6px;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.3);
+}
+
 /* ===== Gallery Page ===== */
 .gallery-hero {
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
